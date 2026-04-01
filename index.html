@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viandas Saludables en Río Grande | Sin Gluten | Comer en Serio</title>
     <meta name="description"
-        content="Viandas y almuerzos saludables sin gluten en Río Grande, TDF. Elaboración diaria sin conservantes con envío a domicilio. Menú semanal. Pedí hoy por WhatsApp.">
+        content="Viandas saludables sin gluten en Río Grande. Organizá tu semana de almuerzos con comida real. Pedí por WhatsApp.">
     <!-- Open Graph for better sharing -->
     <meta property="og:title" content="Comer en Serio · Viandas Saludables">
     <meta property="og:description"
@@ -59,10 +59,10 @@
             --text: #1E1A14;
             --text-soft: #6B5F4F;
             --radius: 1.25rem;
-            --shadow-sm: 0 2px 12px rgba(59, 47, 30, .10);
-            --shadow-md: 0 8px 32px rgba(59, 47, 30, .16);
-            --shadow-lg: 0 20px 60px rgba(59, 47, 30, .22);
-            --trans: all .35s cubic-bezier(.4, 0, .2, 1);
+            --shadow-sm: 0 2px 10px rgba(59, 47, 30, .08);
+            --shadow-md: 0 6px 24px rgba(59, 47, 30, .13);
+            --shadow-lg: 0 16px 48px rgba(59, 47, 30, .18);
+            --trans: all .28s cubic-bezier(.4, 0, .2, 1);
         }
 
         html {
@@ -257,11 +257,17 @@
             line-height: 1.1;
             color: var(--earth);
             margin-bottom: 1.25rem;
+            display: flex;
+            flex-direction: column;
         }
 
         .hero-title em {
             font-style: italic;
             color: var(--green);
+            font-size: 0.55em;
+            font-weight: 600;
+            margin-top: 0.2em;
+            line-height: 1.5;
         }
 
         .hero-sub {
@@ -296,8 +302,8 @@
 
         .btn-primary:hover {
             background: var(--green-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(124, 181, 24, .55);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 22px rgba(124, 181, 24, .45);
         }
 
         .btn-ghost {
@@ -317,6 +323,7 @@
         .btn-ghost:hover {
             background: var(--cream-dark);
             border-color: var(--earth-light);
+            transform: translateY(-1px);
         }
 
         .hero-trust {
@@ -351,7 +358,6 @@
             align-items: center;
         }
 
-        /* Modificado para soportar el zoom de la imagen correctamente */
         .hero-img-wrap {
             position: relative;
             width: 420px;
@@ -359,7 +365,7 @@
             border-radius: 2rem 6rem 2rem 6rem;
             box-shadow: var(--shadow-lg);
             overflow: hidden;
-            /* Clave para que el scale no desborde el contenedor */
+            padding: 5px;
         }
 
         .hero-img-main {
@@ -374,7 +380,7 @@
             position: absolute;
             background: var(--white);
             border-radius: var(--radius);
-            padding: .75rem 1.1rem;
+            padding: 10px 14px;
             box-shadow: var(--shadow-md);
             display: flex;
             align-items: center;
@@ -382,9 +388,11 @@
             font-size: .8rem;
             font-weight: 600;
             color: var(--text);
-            white-space: nowrap;
+            white-space: normal;
+            max-width: 80%;
+            text-align: center;
             z-index: 2;
-            /* Por si acaso con el overflow */
+            line-height: 1.3;
         }
 
         .hero-badge-float i {
@@ -399,9 +407,10 @@
         }
 
         .hb2 {
-            bottom: 50px;
-            right: -30px;
+            bottom: 70px;
+            right: 16px;
             animation: floaty 4s ease-in-out infinite 1.5s;
+            max-width: 65%;
         }
 
         @keyframes floaty {
@@ -741,7 +750,7 @@
 
         .gallery-item:hover {
             box-shadow: var(--shadow-md);
-            transform: translateY(-5px);
+            transform: translateY(-4px);
         }
 
         .gallery-item img {
@@ -814,7 +823,7 @@
         }
 
         .plan-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-md);
             border-color: var(--green-light);
         }
@@ -1152,7 +1161,7 @@
         }
 
         .testi-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-md);
         }
 
@@ -1305,8 +1314,8 @@
         }
 
         .btn-wa:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .28);
         }
 
         /* Microcopy additions */
@@ -1592,7 +1601,14 @@
             }
 
             .hero-visual {
-                display: none;
+                display: flex;
+                max-width: 300px;
+                margin: 2rem auto 0;
+            }
+
+            .hero-img-wrap {
+                width: 100%;
+                height: 380px;
             }
 
             .steps-grid {
@@ -1780,10 +1796,10 @@
         </a>
         <ul class="nav-links">
             <li><a href="#como-funciona">¿Cómo funciona?</a></li>
-            <li><a href="#menu">Menú semanal</a></li>
+            <li><a href="#menu">Ejemplos de platos</a></li>
             <li><a href="#planes">Planes Mensuales</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#contacto" class="btn-nav"><i class="fa-brands fa-whatsapp"></i> Pedir ahora</a></li>
+            <li><a href="#contacto" class="btn-nav"><i class="fa-brands fa-whatsapp"></i> Asegurar mi semana</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Menú">
             <span></span><span></span><span></span>
@@ -1806,31 +1822,40 @@
                     </div>
                 </div>
                 <h1 class="hero-title">
-                    Viandas saludables en<br><em>Río Grande.</em>
+                    Dejá de cocinar todos los días.
+                    <em>Viandas sin TACC en Río Grande · Resolvemos tus almuerzos de lunes a viernes — solo eso</em>
                 </h1>
 
-                <!-- Diferencial del negocio posicionado bien arriba -->
                 <p class="hero-sub">
-                    Comida real y saludable elaborada a diario con ingredientes de estación.<br><br>
-                    <strong style="color: var(--green-dark);">No vendemos platos sueltos. Diseñamos tu semana de
-                        almuerzos.</strong> El objetivo es que comer sano en la semana deje de ser un problema.
+                    ✔️ Tu almuerzo listo cuando llegás a casa.<br>
+                    ✔️ Comida real, casera, 100% sin TACC.<br>
+                    ✔️ En tu puerta, de lunes a viernes.<br><br>
+                    <span style="display:block; margin-bottom: 0.3rem; font-weight: 500;">No vendemos platos
+                        sueltos.</span>
+                    <strong style="color: var(--green-dark); font-size: 1.05rem;">Resolvemos tu semana entera de
+                        almuerzos.</strong>
                 </p>
                 <div class="hero-actions" style="align-items: flex-start; gap: 1.5rem;">
                     <div style="display:flex; flex-direction:column; width: max-content;">
-                        <a href="https://wa.me/5492964472865?text=Hola%20Chef%20Pikin,%20quiero%20reservar%20mi%20plan%20semanal."
+                        <a href="https://wa.me/5492964472865?text=Hola.%20Quiero%20asegurar%20mis%20almuerzos%20de%20esta%20semana.%20%C2%BFQuedan%20lugares?"
                             target="_blank" class="btn-primary" id="hero-cta">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir ahora
+                            <i class="fa-brands fa-whatsapp"></i> Asegurar mi semana ahora
                         </a>
                         <!-- Gatillo mental y de capacidad -->
                         <span class="microcopy">
-                            <i class="fa-solid fa-fire" style="color: #ff6b6b; margin-right: 2px;"></i> Solo 40
-                            almuerzos por día · Se agotan rápido
+                            <i class="fa-solid fa-utensils" style="color: #ff6b6b; margin-right: 2px;"></i> Solo 40
+                            viandas por día · los cupos se llenan rápido
+                            <br><span
+                                style="font-weight: 500; opacity: 0.8; margin-top: 4px; display: inline-block;">Sin
+                                compromiso · Respondemos en minutos</span>
                         </span>
                     </div>
                     <a href="#menu" class="btn-ghost" id="hero-menu" style="margin-top: 0.15rem;">
-                        <i class="fa-solid fa-utensils"></i> Ver qué voy a comer esta semana
+                        <i class="fa-solid fa-utensils"></i> Ver ejemplos de platos
                     </a>
                 </div>
+                <p style="font-size:0.8rem; color:var(--text-soft); margin-top:-1.5rem; margin-bottom:0.5rem;">⭐⭐⭐⭐⭐
+                    Clientes que repiten semana a semana en Río Grande.</p>
                 <div class="hero-trust">
                     <div class="trust-item">
                         <span class="trust-num">Sin</span>
@@ -1857,7 +1882,7 @@
                         <i class="fa-solid fa-circle-check"></i> Elaboración sin gluten
                     </div>
                     <div class="hero-badge-float hb2">
-                        <i class="fa-solid fa-fire-flame-curved"></i> Lunes a viernes
+                        <i class="fa-solid fa-fire"></i> Pocos cupos por día
                     </div>
                 </div>
             </div>
@@ -1869,7 +1894,7 @@
         <div class="features-strip-inner">
             <div class="feat-item"><i class="fa-solid fa-shield-heart"></i> Cocina sin gluten</div>
             <div class="feat-item"><i class="fa-solid fa-ban"></i> Elaboración diaria sin conservantes</div>
-            <div class="feat-item"><i class="fa-solid fa-truck-fast"></i> Envíos Seguros en Río Grande</div>
+            <div class="feat-item"><i class="fa-solid fa-truck-fast"></i> Envío a tu puerta en Río Grande</div>
             <div class="feat-item"><i class="fa-solid fa-seedling"></i> Carnes y Vegetales Frescos</div>
             <div class="feat-item"><i class="fa-brands fa-whatsapp"></i> Te respondemos en minutos por WhatsApp</div>
         </div>
@@ -1879,35 +1904,46 @@
     <section class="target-section" id="ideal">
         <div class="target-inner">
             <div class="how-head reveal" style="margin-bottom: 3rem;">
-                <h2 class="sec-title" style="font-size: 2.2rem;">Ideal para...</h2>
+                <h2 class="sec-title" style="font-size: 2.2rem;">Esto es para vos si...</h2>
             </div>
             <div class="target-grid reveal">
                 <div class="t-card">
-                    <div class="t-icon"><i class="fa-solid fa-shield-heart"></i></div>
-                    <h4>Personas celíacas</h4>
-                    <p>Elaboración cuidada para evitar contaminación cruzada.</p>
+                    <div class="t-icon"><i class="fa-solid fa-fire-burner"></i></div>
+                    <h4>No querés cocinar</h4>
+                    <p>Llegás cansado y no querés ni mirar la cocina. Nosotros ya cocinamos por vos.</p>
                 </div>
                 <div class="t-card">
-                    <div class="t-icon"><i class="fa-solid fa-briefcase"></i></div>
-                    <h4>Profesionales</h4>
-                    <p>Que trabajan todo el día y necesitan energía sostenida sin cocinar.</p>
+                    <div class="t-icon"><i class="fa-regular fa-clock"></i></div>
+                    <h4>No tenés tiempo</h4>
+                    <p>Tu rutina no para. Tu almuerzo tiene que estar listo sin que vos hagas nada.</p>
                 </div>
                 <div class="t-card">
                     <div class="t-icon"><i class="fa-solid fa-apple-whole"></i></div>
-                    <h4>Comer sano</h4>
-                    <p>Ideal para quien busca una alimentación real, equilibrada y deliciosa.</p>
+                    <h4>Querés comer mejor</h4>
+                    <p>Comida real, sin ultraprocesados y 100% sin TACC. Sin negociar sabor por salud.</p>
                 </div>
                 <div class="t-card">
                     <div class="t-icon"><i class="fa-solid fa-house-user"></i></div>
-                    <h4>Personas solas</h4>
-                    <p>Porciones justas y variadas, evitando el desperdicio de comida.</p>
+                    <h4>Vivís solo</h4>
+                    <p>Comprar para uno es caro y sobra todo. Acá recibís exactamente lo que necesitás.</p>
                 </div>
             </div>
-            <!-- Progresión de CTA: en vez de forzar a que compren acá, los mandamos a ver el sistema -->
+
             <div class="target-cta reveal" style="text-align: center; margin-top: 3.5rem;">
                 <a href="#menu" class="btn-primary">
-                    <i class="fa-solid fa-utensils"></i> Ver menú semanal
+                    <i class="fa-solid fa-utensils"></i> Ver cómo resolvemos tu semana
                 </a>
+            </div>
+
+            <div class="reveal"
+                style="max-width:600px;margin:3rem auto 0;text-align:center;color:var(--text-soft);line-height:1.7;padding:1.5rem; background: var(--cream-dark); border-radius: var(--radius);">
+                <p style="margin-bottom: 0.5rem;">
+                    <strong>Elaboración sin gluten con máximo cuidado.</strong><br>
+                    Trabajamos con protocolos estrictos en cada proceso para evitar cualquier contaminación cruzada.
+                </p>
+                <p style="font-size: 0.9rem; opacity: 0.9;">
+                    <em>Actualmente no contamos con certificación oficial.</em>
+                </p>
             </div>
         </div>
     </section>
@@ -1917,30 +1953,30 @@
         <div class="how-inner">
             <div class="how-head reveal">
                 <div class="sec-tag">¿Cómo funciona?</div>
-                <h2 class="sec-title">Tu comida sana en <em>3 pasos</em></h2>
+                <h2 class="sec-title">Resolvé tu semana en <em>3 pasos</em></h2>
                 <p style="color:var(--text-soft);max-width:500px;margin:0 auto;line-height:1.75;font-size:.97rem;">
+                    <strong>Y no cocines nunca más de lunes a viernes.</strong><br>
                     Sin complicaciones. Sin formularios largos. Solo elegís, pedís y recibís.
                 </p>
             </div>
             <div class="steps-grid">
                 <div class="step-card reveal">
                     <div class="step-num"><i class="fa-solid fa-calendar-week"></i></div>
-                    <h4>1. Mirás el menú semanal</h4>
-                    <!-- Vender el sistema, no el plato del día -->
-                    <p>Cada semana publicamos los platos disponibles. <strong>Elegís tu plan y organizás toda tu
-                            semana</strong> sin preocuparte por cocinar.</p>
+                    <h4>1. Mirás los platos de la semana</h4>
+                    <p>Armamos un menú distinto cada semana. <strong>Elegís tu plan y te olvidás de las compras, cocinar
+                            y lavar.</strong></p>
                 </div>
                 <div class="step-card reveal">
                     <div class="step-num"><i class="fa-brands fa-whatsapp"></i></div>
                     <h4>2. Pedís por WhatsApp</h4>
-                    <p>Nos mandás un mensaje con tu pedido, dirección y horario de entrega. <strong>Te confirmamos en el
-                            acto.</strong></p>
+                    <p>Nos escribís por WhatsApp para asegurar tu lugar en la producción. <strong>Los cupos se llenan
+                            rápido.</strong></p>
                 </div>
                 <div class="step-card reveal">
                     <div class="step-num"><i class="fa-solid fa-box-open"></i></div>
                     <h4>3. Recibís en tu puerta</h4>
-                    <p>Te llevamos comida cuidada y lista para disfrutar, en envases aptos. Sin complicaciones ni
-                        demoras.</p>
+                    <p>Recibís tu almuerzo listo para comer todos los días. Comida real y segura, directo en tu puerta.
+                    </p>
                 </div>
             </div>
         </div>
@@ -1979,14 +2015,15 @@
     <section class="menu-section" id="menu">
         <div class="menu-inner">
             <div class="menu-head reveal">
-                <div class="sec-tag">Menú Semanal Fresco</div>
-                <h2 class="sec-title">Almuerzos libres de <em>gluten</em></h2>
+                <div class="sec-tag">Platos de ejemplo</div>
+                <h2 class="sec-title">
+                    Así resolvés tus almuerzos <em>de lunes a viernes</em>
+                </h2>
                 <p style="color:var(--text-soft);max-width:520px;margin:0 auto;line-height:1.75;font-size:.95rem;">
-                    Platos equilibrados, elaborados hoy con ingredientes frescos y con <strong>cocina cuidada sin
-                        gluten</strong>.
-                </p>
-                <p style="margin-top:1rem; font-size:.85rem; color:var(--text-soft);">
-                    El menú cambia todas las semanas según disponibilidad de ingredientes.
+                    Estos son algunos de los platos que preparamos. El menú cambia cada semana según los ingredientes
+                    disponibles.<br><br>
+                    <strong style="color: var(--earth);">Esto es un ejemplo de cómo comés durante toda la
+                        semana:</strong>
                 </p>
             </div>
 
@@ -1994,102 +2031,74 @@
                 <!-- Lunes -->
                 <div class="menu-card reveal">
                     <div class="menu-card-body">
-                        <h4><span style="color: var(--green-dark);">Lunes</span> · Pollo relleno + puré de calabaza</h4>
-                        <p>Pechuga de pollo de campo rellena con espinacas y queso, acompañada de un suave puré de
-                            calabaza asada.</p>
+                        <h4><span style="color: var(--green-dark);">Lunes</span> · Robalo al horno con costra de semillas</h4>
+                        <p>Filet de robalo jugoso con costra crocante de semillas, acompañado de una suave crema de vegetales verdes.</p>
                         <div class="menu-card-tags">
-                            <span class="mtag">🐔 Pollo</span>
+                            <span class="mtag">🐟 Pescado</span>
                             <span class="mtag">Sin TACC</span>
-                            <span class="mtag">Alto proteico</span>
+                            <span class="mtag">Liviano</span>
                         </div>
-                    </div>
-                    <div class="menu-card-action">
-                        <a href="https://wa.me/5492964472865?text=Hola%21+Quiero+pedir+el+plato+del+Lunes%3A+Pollo+relleno+%2B+pur%C3%A9+de+calabaza"
-                            target="_blank" class="btn-pedir" id="menu-lunes">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir este plato
-                        </a>
                     </div>
                 </div>
 
                 <!-- Martes -->
                 <div class="menu-card reveal">
                     <div class="menu-card-body">
-                        <h4><span style="color: var(--green-dark);">Martes</span> · Porotos colorados estofados</h4>
-                        <p>Con calabaza asada y gremolata fresca de hierbas y limón. Un plato reconfortante y lleno de
-                            sabor.</p>
+                        <h4><span style="color: var(--green-dark);">Martes</span> · Pollo grillado marinado</h4>
+                        <p>Pollo jugoso marinado y grillado, acompañado de calabaza y zanahoria asadas con un toque cítrico fresco.</p>
                         <div class="menu-card-tags">
-                            <span class="mtag">🌱 Vegano</span>
+                            <span class="mtag">🐔 Pollo</span>
                             <span class="mtag">Sin TACC</span>
-                            <span class="mtag">Alto en fibra</span>
+                            <span class="mtag">Equilibrado</span>
                         </div>
-                    </div>
-                    <div class="menu-card-action">
-                        <a href="https://wa.me/5492964472865?text=Hola%21+Quiero+pedir+el+plato+del+Martes%3A+Porotos+colorados+estofados"
-                            target="_blank" class="btn-pedir" id="menu-martes">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir este plato
-                        </a>
                     </div>
                 </div>
 
                 <!-- Miércoles -->
                 <div class="menu-card reveal">
                     <div class="menu-card-body">
-                        <h4><span style="color: var(--green-dark);">Miércoles</span> · Cerdo al horno con hierbas</h4>
-                        <p>Bondiola braseada lentamente con romero y tomillo, servida con papas cuña doradas al horno.
-                        </p>
+                        <h4><span style="color: var(--green-dark);">Miércoles</span> · Bondiola braseada</h4>
+                        <p>Bondiola tierna cocida lentamente con romero y tomillo, acompañada de papas cuña doradas al horno.</p>
                         <div class="menu-card-tags">
                             <span class="mtag">🐷 Cerdo</span>
                             <span class="mtag">Sin TACC</span>
-                            <span class="mtag">Comfort food</span>
+                            <span class="mtag">Intenso</span>
                         </div>
-                    </div>
-                    <div class="menu-card-action">
-                        <a href="https://wa.me/5492964472865?text=Hola%21+Quiero+pedir+el+plato+del+Mi%C3%A9rcoles%3A+Cerdo+al+horno+con+hierbas"
-                            target="_blank" class="btn-pedir" id="menu-miercoles">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir este plato
-                        </a>
                     </div>
                 </div>
 
                 <!-- Jueves -->
                 <div class="menu-card reveal">
                     <div class="menu-card-body">
-                        <h4><span style="color: var(--green-dark);">Jueves</span> · Vacuno braseado corto</h4>
-                        <p>Carne tierna cocida lentamente en sus propios jugos, acompañada de un dulce y cremoso puré de
-                            batatas.</p>
+                        <h4><span style="color: var(--green-dark);">Jueves</span> · Salteado de vegetales estilo wok</h4>
+                        <p>Vegetales de estación crocantes salteados al wok con sésamo tostado y soja sin gluten.</p>
                         <div class="menu-card-tags">
-                            <span class="mtag">🥩 Vacuno</span>
+                            <span class="mtag">🌱 Vegano</span>
                             <span class="mtag">Sin TACC</span>
-                            <span class="mtag">Rico en hierro</span>
+                            <span class="mtag">Liviano</span>
                         </div>
-                    </div>
-                    <div class="menu-card-action">
-                        <a href="https://wa.me/5492964472865?text=Hola%21+Quiero+pedir+el+plato+del+Jueves%3A+Vacuno+braseado+%2B+pur%C3%A9+de+batatas"
-                            target="_blank" class="btn-pedir" id="menu-jueves">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir este plato
-                        </a>
                     </div>
                 </div>
 
                 <!-- Viernes -->
                 <div class="menu-card reveal">
                     <div class="menu-card-body">
-                        <h4><span style="color: var(--green-dark);">Viernes</span> · Pollo salteado con vegetales</h4>
-                        <p>Wok de pollo con vegetales de estación crocantes, terminado con sésamo tostado y salsa de
-                            soja sin gluten.</p>
+                        <h4><span style="color: var(--green-dark);">Viernes</span> · Quinoa con legumbres y vegetales</h4>
+                        <p>Mezcla nutritiva con textura cremosa y terminación cítrica que aporta frescura y equilibrio.</p>
                         <div class="menu-card-tags">
-                            <span class="mtag">🐔 Pollo</span>
+                            <span class="mtag">🌱 Vegano</span>
                             <span class="mtag">Sin TACC</span>
-                            <span class="mtag">Liviano</span>
+                            <span class="mtag">Nutritivo</span>
                         </div>
                     </div>
-                    <div class="menu-card-action">
-                        <a href="https://wa.me/5492964472865?text=Hola%21+Quiero+pedir+el+plato+del+Viernes%3A+Pollo+salteado+con+vegetales"
-                            target="_blank" class="btn-pedir" id="menu-viernes">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir este plato
-                        </a>
-                    </div>
                 </div>
+            </div>
+
+            <div style="text-align:center; margin-top: 2rem;">
+                <a href="https://wa.me/5492964472865?text=Hola.%20Me%20gust%C3%B3%20el%20men%C3%BA.%20Quiero%20asegurar%20mi%20semana%20de%20almuerzos."
+                    target="_blank" class="btn-primary">
+                    <i class="fa-brands fa-whatsapp"></i> Asegurar mi lugar esta semana
+                </a>
             </div>
         </div>
     </section>
@@ -2117,7 +2126,7 @@
                     <img src="plato-gourmet-verde.webp" alt="Plato gourmet sin gluten con hojas frescas">
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="plato-pescado-pure.webp" alt="Vianda de pescado fresco con puré libre de gluten">
+                    <img src="plato-mijo-salteado.webp" alt="Vianda saludable de mijo con vegetales y carne sin gluten">
                 </div>
                 <div class="gallery-item reveal">
                     <img src="plato-pure-huevo-verduras.webp" alt="Almuerzo casero nutritivo de huevo, puré y verduras">
@@ -2147,18 +2156,18 @@
                     <div
                         style="background: var(--green); color: var(--white); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
                         <strong style="font-size: 1.05rem;"><i class="fa-solid fa-star"></i> Plan mensual
-                            (prioridad):</strong><br>
-                        Tu mes resuelto. Recibís almuerzos toda la semana.
+                            (prioridad de cupo):</strong><br>
+                        Tu mes resuelto. Te olvidás de cocinar por 4 semanas.
                     </div>
                     <div style="background: var(--cream); padding: 1.5rem; border-radius: var(--radius);">
                         <strong style="color: var(--earth);"><i class="fa-solid fa-calendar-week"></i> Plan
                             semanal:</strong><br>
-                        Semana de prueba. Sujeto a disponibilidad.
+                        Tu semana resuelta de lunes a viernes. Sujeto a disponibilidad.
                     </div>
                     <div style="background: var(--white); padding: 1.5rem; border-radius: var(--radius);">
                         <strong style="color: var(--text);"><i class="fa-solid fa-bag-shopping"></i> Pedidos
                             ocasionales:</strong><br>
-                        Solo si sobra stock en la producción del día.
+                        Sujeto a stock sobrante de la producción del día.
                     </div>
                 </div>
             </div>
@@ -2170,8 +2179,9 @@
         <div class="plans-inner">
             <div class="plans-head reveal">
                 <div class="sec-tag">Nuevo Ciclo Mensual</div>
-                <h2 class="sec-title">Sistema de almuerzos <em>planificados</em></h2>
-                <p>Cocina real. Sin gluten. Pensada para vos.</p>
+                <h2 class="sec-title">Tu mes de almuerzos <em>resuelto</em></h2>
+                <p><strong>Un almuerzo casero y sin TACC por menos de lo que sale pedir delivery.</strong> Sin cocinar,
+                    sin comprar, sin lavar.</p>
             </div>
 
             <div class="plan-compare reveal">
@@ -2184,22 +2194,32 @@
                 <div class="pc-row">
                     <div class="pc-col pc-title">Ejecutivo</div>
                     <div class="pc-col pc-desc">20</div>
-                    <div class="pc-col pc-price">$240.000</div>
+                    <div class="pc-col">
+                        <div class="pc-price" style="margin-bottom: 0.2rem;">$240.000</div>
+                        <div style="font-size: 0.75rem; color: var(--text-soft); font-weight: 600; line-height: 1.3;">~
+                            $12.000 por almuerzo<br><span style="font-weight:400">Delivery cuesta el doble o más</span>
+                        </div>
+                    </div>
                     <div class="pc-col pc-action">
-                        <a href="https://wa.me/5492964472865?text=Hola%20Chef%20Pikin,%20me%20interesa%20el%20Plan%20Ejecutivo%20de%2020%20almuerzos."
+                        <a href="https://wa.me/5492964472865?text=Hola.%20Quiero%20contratar%20el%20Plan%20Ejecutivo%20(20%20almuerzos)."
                             target="_blank" class="btn-pedir">
-                            <i class="fa-brands fa-whatsapp"></i> Solicitar
+                            <i class="fa-brands fa-whatsapp"></i> Quiero el Plan Ejecutivo
                         </a>
                     </div>
                 </div>
                 <div class="pc-row highlight">
                     <div class="pc-col pc-title">Dúo</div>
                     <div class="pc-col pc-desc">20 cada uno</div>
-                    <div class="pc-col pc-price">$220.000</div>
+                    <div class="pc-col">
+                        <div class="pc-price" style="margin-bottom: 0.2rem;">$220.000</div>
+                        <div style="font-size: 0.75rem; color: var(--green-dark); font-weight: 600; line-height: 1.3;">~
+                            $11.000 por almuerzo<br><span style="font-weight:400; color: var(--text-soft);">El precio
+                                más bajo del servicio</span></div>
+                    </div>
                     <div class="pc-col pc-action">
-                        <a href="https://wa.me/5492964472865?text=Hola%20Chef%20Pikin,%20me%20interesa%20el%20Plan%20D%C3%BAo."
+                        <a href="https://wa.me/5492964472865?text=Hola.%20Queremos%20contratar%20el%20Plan%20D%C3%BAo%20(40%20almuerzos)."
                             target="_blank" class="btn-pedir pc-btn-high">
-                            <i class="fa-brands fa-whatsapp"></i> Solicitar
+                            <i class="fa-brands fa-whatsapp"></i> Quiero el Plan Dúo
                         </a>
                     </div>
                 </div>
@@ -2216,15 +2236,16 @@
                     style="background: var(--cream); padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--cream-dark); margin-bottom: 2rem;">
                     <p style="margin-bottom: 0.8rem;">
                         <strong style="color: var(--earth);">Plan semanal:</strong> 5 almuerzos → $67.500<br>
-                        <strong style="color: var(--earth);">Viandas ocasionales:</strong> $14.500 (según
-                        disponibilidad)
+                        <strong style="color: var(--earth);">Vianda ocasional:</strong> $14.500 (según disponibilidad)
                     </p>
                     <p style="font-size:.85rem; color:var(--text-soft); margin-bottom: 0.8rem;">
-                        Equivale a ~$12.000 por almuerzo en el plan mensual.
+                        El plan mensual te sale ~$12.000 por almuerzo. Un delivery promedio en Río Grande sale más del
+                        doble.
                     </p>
                     <p style="font-size: 0.85rem; padding-top: 0.8rem; border-top: 1px solid var(--cream-dark);">
-                        Trabajo con cupos reducidos para asegurar la calidad de cada preparación.<br>
-                        <strong style="color: var(--green-dark);">Inicio inmediato.</strong>
+                        Cocinamos exactamente lo que nos piden para mantener la calidad.<br>
+                        <strong style="color: var(--green-dark);">Escribinos hoy para asegurar tu lugar desde el
+                            lunes.</strong>
                     </p>
                 </div>
 
@@ -2252,11 +2273,12 @@
                 <!-- Más aire, menos carga cognitiva -->
                 <p>
                     Sabemos lo difícil que es encontrar comida segura y rica fuera de casa. Por eso diseñamos un esquema
-                    logístico impecable para que comer sano no sea un problema.
+                    logístico impecable para que comer sano no sea una carga, sino un placer.
                 </p>
                 <p>
-                    Cocinamos comida reconfortante desde cero, diariamente. <strong>Sin polvos ni congelados
-                        industriales.</strong>
+                    Cocinamos comida reconfortante desde cero, diariamente. <strong>Para garantizar la calidad de comida
+                        casera, nuestra producción está limitada a 40 viandas diarias. No hacemos comida
+                        industrial.</strong>
                 </p>
 
                 <div class="quality-perks">
@@ -2336,13 +2358,12 @@
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <blockquote>Siendo celíaca es súper difícil confiar en delivery en la isla. Comer en Serio me
-                        solucionó los almuerzos. Súper seguro y riquísimo.</blockquote>
+                    <blockquote>El servicio es excelente.</blockquote>
                     <div class="testi-author">
-                        <div class="testi-av av1">VR</div>
+                        <div class="testi-av av1">FF</div>
                         <div>
-                            <span class="testi-name">Valeria R.</span>
-                            <span class="testi-role">Clienta habitual verificada</span>
+                            <span class="testi-name">Fede F.</span>
+                            <span class="testi-role">Cliente habitual</span>
                         </div>
                     </div>
                 </div>
@@ -2351,13 +2372,13 @@
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <blockquote>Ahora encargo los menúes de lunes a viernes y me olvido. Llega caliente, a tiempo y la
-                        calidad es fantástica. No cocino más.</blockquote>
+                    <blockquote>Muy buena la comida, sin quejas. El cerdo braseado con vegetales y arroz está tremendo.
+                    </blockquote>
                     <div class="testi-author">
-                        <div class="testi-av av2">MG</div>
+                        <div class="testi-av av2">JG</div>
                         <div>
-                            <span class="testi-name">Martín G.</span>
-                            <span class="testi-role">Cliente semanal verificado</span>
+                            <span class="testi-name">Joel G.</span>
+                            <span class="testi-role">Cliente habitual</span>
                         </div>
                     </div>
                 </div>
@@ -2366,13 +2387,13 @@
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <blockquote>El pollo relleno es una locura total. Después de probar tantas opciones sin sabor, esto
-                        se siente como comida casera posta. Recomiendo mil.</blockquote>
+                    <blockquote>Jamás había disfrutado tanto de mis almuerzos en mi lugar de trabajo. Riquísimo todo,
+                        gracias.</blockquote>
                     <div class="testi-author">
-                        <div class="testi-av av3">LC</div>
+                        <div class="testi-av av3">VB</div>
                         <div>
-                            <span class="testi-name">Laura C.</span>
-                            <span class="testi-role">Primer pedido - Verificada</span>
+                            <span class="testi-name">Virginia B.</span>
+                            <span class="testi-role">Cliente habitual</span>
                         </div>
                     </div>
                 </div>
@@ -2380,9 +2401,9 @@
 
             <!-- Progresión de CTA: Convencer a mediano/largo plazo -->
             <div class="testi-cta reveal" style="text-align: center; margin-top: 4rem;">
-                <a href="https://wa.me/5492964472865?text=Hola%20Chef%20Pikin,%20quiero%20reservar%20mi%20plan%20semanal."
+                <a href="https://wa.me/5492964472865?text=Hola.%20Quiero%20empezar%20con%20las%20viandas%20y%20resolver%20mi%20semana."
                     target="_blank" class="btn-primary" style="font-size: 1.05rem; padding: 1.1rem 2.8rem;">
-                    👉 Reservar semana
+                    <i class="fa-brands fa-whatsapp"></i> Asegurar mi semana de almuerzos
                 </a>
             </div>
         </div>
@@ -2418,22 +2439,23 @@
     <!-- ══ CTA FINAL ══════════════════════════════════════ -->
     <section class="cta-section" id="contacto">
         <div class="cta-inner reveal">
-            <h2>Empezá a comer mejor desde esta semana.</h2>
-            <p>Comida casera, sin gluten y entregada donde estés. Asegurá tu vianda de hoy o suscribite a nuestros
-                planes mensuales.</p>
+            <h2>Tu semana resuelta empieza hoy.</h2>
+            <p>Escribinos por WhatsApp y asegurá tu lugar antes de que se complete la producción. <strong>40 viandas por
+                    día. Sin excepciones.</strong></p>
             <div class="cta-actions" style="margin-bottom: 0.5rem;">
                 <div style="display:flex; flex-direction:column; align-items:center;">
-                    <p style="font-size:.85rem; color:rgba(255,255,255,.7); margin-bottom:1rem;">
-                        Producción diaria · Cupos limitados · Atención directa con el chef
+                    <p style="font-size:.85rem; color:rgba(255,255,255,.8); margin-bottom:1rem; font-weight: 500;">
+                        <i class="fa-solid fa-utensils" style="margin-right: 4px;"></i> Producción limitada a 40 viandas
+                        por día
                     </p>
 
                     <!-- Progresión de CTA Final: Asegurar compromiso -->
-                    <a href="https://wa.me/5492964472865?text=Hola%20Chef%20Pikin,%20quiero%20reservar%20mi%20plan%20semanal."
+                    <a href="https://wa.me/5492964472865?text=Hola.%20Quiero%20asegurar%20mis%20almuerzos%20antes%20de%20que%20se%20agoten%20los%20cupos."
                         target="_blank" class="btn-wa" id="cta-wa">
-                        <i class="fa-brands fa-whatsapp"></i> Quiero mi plan semanal
+                        <i class="fa-brands fa-whatsapp"></i> Asegurar mi lugar esta semana
                     </a>
-                    <span class="microcopy microcopy-wa"><i class="fa-solid fa-check"></i> Te respondemos en
-                        minutos</span>
+                    <span class="microcopy microcopy-wa"><i class="fa-solid fa-check"></i> Sin compromiso · Te
+                        respondemos en minutos.</span>
                 </div>
             </div>
         </div>
@@ -2451,7 +2473,8 @@
 
         <div style="border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.5rem; font-size: 0.82rem;">
             © 2026 <strong style="color:rgba(255,255,255,.8)">Comer en Serio</strong> · Viandas saludables ·
-            <a href="https://wa.me/5492964472865?text=Hola%20Chef%20Pikin,%20tengo%20una%20consulta."><i
+            <a
+                href="https://wa.me/5492964472865?text=Hola,%20quiero%20informaci%C3%B3n%20para%20asegurar%20mis%20almuerzos."><i
                     class="fa-brands fa-whatsapp"></i> +54 9 2964 472865</a>
 
             <p style="font-size:0.75rem; color:rgba(255,255,255,.55); margin-top:1.5rem; font-style: italic;">
@@ -2461,8 +2484,8 @@
     </footer>
 
     <!-- WA Float -->
-    <a href="https://wa.me/5492964472865?text=Hola%20Chef%20Pikin,%20quiero%20hacer%20una%20consulta." target="_blank"
-        class="wa-float" id="wa-float" title="Reservar viandas por WhatsApp" aria-label="WhatsApp">
+    <a href="https://wa.me/5492964472865?text=Hola.%20Quiero%20asegurar%20mis%20almuerzos%20de%20esta%20semana."
+        target="_blank" class="wa-float" id="wa-float" title="Reservar viandas por WhatsApp" aria-label="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
