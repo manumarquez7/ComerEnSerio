@@ -1780,6 +1780,64 @@
                 display: flex;
             }
         }
+
+        /* ══════════════════ LIGHTBOX ══════════════════ */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+
+        .lightbox-overlay.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            z-index: 1001;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            color: var(--green-light);
+        }
+
+        .gallery-item {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -1823,7 +1881,7 @@
                 </div>
                 <h1 class="hero-title">
                     Dejá de cocinar todos los días.
-                    <em>Viandas sin TACC en Río Grande · Resolvemos tus almuerzos de lunes a viernes</em>
+                    <em>Viandas sin TACC en Río Grande · Resolvemos tus almuerzos de lunes a viernes </em>
                 </h1>
 
                 <p class="hero-sub">
@@ -2031,8 +2089,10 @@
                 <!-- Lunes -->
                 <div class="menu-card reveal">
                     <div class="menu-card-body">
-                        <h4><span style="color: var(--green-dark);">Lunes</span> · Robalo al horno con costra de semillas</h4>
-                        <p>Filet de robalo jugoso con costra crocante de semillas, acompañado de una suave crema de vegetales verdes.</p>
+                        <h4><span style="color: var(--green-dark);">Lunes</span> · Robalo al horno con costra de
+                            semillas</h4>
+                        <p>Filet de robalo jugoso con costra crocante de semillas, acompañado de una suave crema de
+                            vegetales verdes.</p>
                         <div class="menu-card-tags">
                             <span class="mtag">🐟 Pescado</span>
                             <span class="mtag">Sin TACC</span>
@@ -2045,7 +2105,8 @@
                 <div class="menu-card reveal">
                     <div class="menu-card-body">
                         <h4><span style="color: var(--green-dark);">Martes</span> · Pollo grillado marinado</h4>
-                        <p>Pollo jugoso marinado y grillado, acompañado de calabaza y zanahoria asadas con un toque cítrico fresco.</p>
+                        <p>Pollo jugoso marinado y grillado, acompañado de calabaza y zanahoria asadas con un toque
+                            cítrico fresco.</p>
                         <div class="menu-card-tags">
                             <span class="mtag">🐔 Pollo</span>
                             <span class="mtag">Sin TACC</span>
@@ -2058,7 +2119,8 @@
                 <div class="menu-card reveal">
                     <div class="menu-card-body">
                         <h4><span style="color: var(--green-dark);">Miércoles</span> · Bondiola braseada</h4>
-                        <p>Bondiola tierna cocida lentamente con romero y tomillo, acompañada de papas cuña doradas al horno.</p>
+                        <p>Bondiola tierna cocida lentamente con romero y tomillo, acompañada de papas cuña doradas al
+                            horno.</p>
                         <div class="menu-card-tags">
                             <span class="mtag">🐷 Cerdo</span>
                             <span class="mtag">Sin TACC</span>
@@ -2070,7 +2132,8 @@
                 <!-- Jueves -->
                 <div class="menu-card reveal">
                     <div class="menu-card-body">
-                        <h4><span style="color: var(--green-dark);">Jueves</span> · Salteado de vegetales estilo wok</h4>
+                        <h4><span style="color: var(--green-dark);">Jueves</span> · Salteado de vegetales estilo wok
+                        </h4>
                         <p>Vegetales de estación crocantes salteados al wok con sésamo tostado y soja sin gluten.</p>
                         <div class="menu-card-tags">
                             <span class="mtag">🌱 Vegano</span>
@@ -2083,8 +2146,10 @@
                 <!-- Viernes -->
                 <div class="menu-card reveal">
                     <div class="menu-card-body">
-                        <h4><span style="color: var(--green-dark);">Viernes</span> · Quinoa con legumbres y vegetales</h4>
-                        <p>Mezcla nutritiva con textura cremosa y terminación cítrica que aporta frescura y equilibrio.</p>
+                        <h4><span style="color: var(--green-dark);">Viernes</span> · Quinoa con legumbres y vegetales
+                        </h4>
+                        <p>Mezcla nutritiva con textura cremosa y terminación cítrica que aporta frescura y equilibrio.
+                        </p>
                         <div class="menu-card-tags">
                             <span class="mtag">🌱 Vegano</span>
                             <span class="mtag">Sin TACC</span>
@@ -2489,6 +2554,12 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- Lightbox Modal -->
+    <div class="lightbox-overlay" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img src="" alt="Imagen ampliada" class="lightbox-content" id="lightbox-img">
+    </div>
+
     <script>
         // Nav scrolled
         const nav = document.getElementById('navbar');
@@ -2524,6 +2595,34 @@
         });
         navLinks.querySelectorAll('a').forEach(a => {
             a.addEventListener('click', () => navLinks.classList.remove('show'));
+        });
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.closest('.gallery-item').addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.classList.remove('active');
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+            }
         });
     </script>
 </body>
