@@ -2346,7 +2346,6 @@
         footer { color: rgba(255,255,255,.72); }
         .microcopy-wa { color: rgba(255,255,255,.9); }
         .wa-float { transition: opacity .25s ease, visibility .25s ease, transform .25s ease; }
-        .wa-float.is-suppressed { opacity: 0; visibility: hidden; pointer-events: none; }
         .hamburger { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
         .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
@@ -2384,6 +2383,52 @@
             .wa-float { width: 48px; height: 48px; right: 16px; bottom: max(16px,env(safe-area-inset-bottom)); font-size: 1.35rem; }
             .lightbox-close { right: 16px; top: max(16px,env(safe-area-inset-top)); }
             dialog.lightbox-overlay { padding: 16px; }
+        }
+        /* Food and chef photo interactions */
+        .photo-frame {
+            position: relative;
+            border-radius: 2rem;
+            overflow: hidden;
+            isolation: isolate;
+            aspect-ratio: 4 / 5;
+            max-height: 620px;
+            box-shadow: var(--shadow-lg);
+        }
+        .photo-frame :is(.quality-img, .chef-img) {
+            display: block;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: auto;
+            object-fit: cover;
+            transition: transform .65s cubic-bezier(.2,.7,.2,1), filter .45s ease;
+        }
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(360px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(255,255,255,.23), transparent 70%);
+            box-shadow: inset 0 0 0 2px rgba(212,237,160,.6);
+            opacity: 0;
+            transition: opacity .35s ease;
+            pointer-events: none;
+        }
+        .quality-img-wrap, .chef-photo { transition: transform .4s ease, opacity .7s ease; }
+        .quality-img-badge { transition: transform .4s ease, box-shadow .4s ease; }
+        .hero-tag, .trust-item, .plans-perks span, .nav-logo-icon { transition: transform .3s ease, box-shadow .3s ease, color .3s ease; }
+        @media (prefers-reduced-motion: no-preference) {
+            :where(.mouse-effects) :is(.quality-img-wrap, .chef-photo).visible:hover {
+                transform: perspective(1100px) translateY(-6px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
+            }
+            :where(.mouse-effects) :is(.quality-img-wrap, .chef-photo):hover .photo-frame::after { opacity: 1; }
+            :where(.mouse-effects) :is(.quality-img-wrap, .chef-photo):hover img { transform: scale(1.065); filter: saturate(1.1) contrast(1.02); }
+            :where(.mouse-effects) .quality-img-wrap:hover .quality-img-badge { transform: translateY(-8px) rotate(7deg); box-shadow: 0 14px 35px rgba(124,181,24,.5); }
+            :where(.mouse-effects) .nav-brand:hover .nav-logo-icon { transform: rotate(-10deg) scale(1.1); }
+            :where(.mouse-effects) .hero-tag:hover { transform: translateY(-3px); box-shadow: 0 5px 14px rgba(124,181,24,.16); }
+            :where(.mouse-effects) .trust-item:hover, :where(.mouse-effects) .plans-perks span:hover { transform: translateY(-4px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .photo-frame img, .quality-img-wrap, .chef-photo, .quality-img-badge, .nav-logo-icon, .hero-tag, .trust-item, .plans-perks span { transform: none !important; }
         }
     </style>
 </head>
@@ -2829,7 +2874,9 @@
     <section class="quality" id="nosotros">
         <div class="quality-inner">
             <div class="quality-img-wrap reveal">
+                <div class="photo-frame">
                 <img loading="lazy" decoding="async" width="720" height="1031" src="plato-gourmet-verde.webp" alt="Plato gourmet" class="quality-img">
+                </div>
                 <div class="quality-img-badge">
                     <i class="fa-solid fa-seedling"></i>
                     <span>Real &amp; Natural</span>
@@ -2881,7 +2928,9 @@
     <section class="chef-section" id="chef">
         <div class="chef-inner">
             <div class="chef-photo reveal">
+                <div class="photo-frame">
                 <img loading="lazy" decoding="async" width="1600" height="2668" src="chef-pikin.webp" alt="Chef Pikin" class="chef-img">
+                </div>
             </div>
             <div class="chef-content reveal">
                 <div class="sec-tag">Quién cocina</div>
@@ -3098,7 +3147,7 @@
         pointerMotion.addEventListener('change', () => {
             if (!pointerMotion.matches) root.classList.remove('mouse-effects');
         });
-        const pointerCards = document.querySelectorAll('.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header), .gallery-item, .hero-img-wrap, .delivery-card, .service-card, .plans-note, .payment-method, .btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa');
+        const pointerCards = document.querySelectorAll('.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header), .gallery-item, .hero-img-wrap, .delivery-card, .service-card, .plans-note, .payment-method, .quality-img-wrap, .chef-photo, .btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa');
         pointerCards.forEach(card => {
             let frame = 0;
             card.addEventListener('pointermove', event => {
@@ -3110,7 +3159,7 @@
                     const y = event.clientY - box.top;
                     card.style.setProperty('--pointer-x', `${x}px`);
                     card.style.setProperty('--pointer-y', `${y}px`);
-                    if (card.matches('.hero-img-wrap, .t-card, .testi-card, .delivery-card, .service-card, .plans-note')) {
+                    if (card.matches('.hero-img-wrap, .t-card, .testi-card, .delivery-card, .service-card, .plans-note, .quality-img-wrap, .chef-photo')) {
                         const tilt = card.classList.contains('hero-img-wrap') ? 5 : 3;
                         card.style.setProperty('--tilt-x', `${(0.5 - y / box.height) * tilt}deg`);
                         card.style.setProperty('--tilt-y', `${(x / box.width - 0.5) * tilt}deg`);
@@ -3225,19 +3274,6 @@
             document.documentElement.style.overflow = previousOverflow;
         });
 
-        // Keep a single prominent WhatsApp action visible at a time.
-        const floatingWhatsApp = document.getElementById('wa-float');
-        const visibleWhatsAppActions = new Set();
-        const whatsAppObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio >= .6) visibleWhatsAppActions.add(entry.target);
-                else visibleWhatsAppActions.delete(entry.target);
-            });
-            floatingWhatsApp.classList.toggle('is-suppressed', visibleWhatsAppActions.size > 0);
-        }, { threshold: [0, .6, 1], rootMargin: '-70px 0px 0px 0px' });
-        document.querySelectorAll('.hero-actions a[href*="wa.me"], .pc-action a, .testi-cta a, #cta-wa').forEach(button => {
-            whatsAppObserver.observe(button);
-        });
     </script>
 </body>
 
