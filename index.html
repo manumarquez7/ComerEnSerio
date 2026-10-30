@@ -17,7 +17,9 @@
     <meta property="og:image" content="https://comerenserio.com.ar/hero-plato.webp">
     <meta property="og:locale" content="es_AR">
     <meta name="robots" content="index, follow">
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Se actualizó Great Vibes por Allura -->
     <link
@@ -2327,6 +2329,58 @@
         @media (prefers-reduced-motion: reduce) {
             .payment-method, .payment-method i, .btn-wa, .btn-wa i { transform: none !important; }
         }
+        /* Readability, navigation and image viewer polish */
+        section[id] { scroll-margin-top: 88px; }
+        .qperk-text span { color: rgba(255,255,255,.76); line-height: 1.55; }
+        .quality-img-badge span { font-size: .75rem; }
+        .hero-microcopy { font-size: 12px; }
+        .hero-reviews { font-size: 12px; }
+        .hero-section .trust-label { font-size: 12px; }
+        .hero-section .hero-actions a { font-size: 14px; }
+        .pc-caption { font-size: .82rem; }
+        .mtag { font-size: .75rem; }
+        footer { color: rgba(255,255,255,.72); }
+        .microcopy-wa { color: rgba(255,255,255,.9); }
+        .wa-float { transition: opacity .25s ease, visibility .25s ease, transform .25s ease; }
+        .wa-float.is-suppressed { opacity: 0; visibility: hidden; pointer-events: none; }
+        .hamburger { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+        .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        dialog.lightbox-overlay {
+            border: 0;
+            margin: 0;
+            padding: 28px;
+            max-width: none;
+            max-height: none;
+            height: 100dvh;
+        }
+        dialog.lightbox-overlay:not([open]) { display: none; }
+        .lightbox-close {
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.25);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-family: inherit;
+        }
+        .lightbox-content { max-width: min(1100px,100%); max-height: calc(100dvh - 112px); }
+        .gallery-item:active { filter: brightness(.94); }
+        @media (min-width: 961px) and (max-width: 1150px) {
+            .hero-section .hero-actions a { font-size: 12px; }
+        }
+        @media (max-width: 600px) {
+            .hero-microcopy, .hero-reviews { font-size: 11px; }
+            .hero-section .hero-tag { font-size: 9px; }
+            .hero-section .hero-actions a { font-size: 14px; }
+            .hero-section .hero-actions .btn-primary, .hero-section .hero-actions .btn-ghost { flex: auto; }
+            .btn-wa { padding: 1rem 1.4rem; font-size: .95rem; justify-content: center; }
+            .wa-float { width: 48px; height: 48px; right: 16px; bottom: max(16px,env(safe-area-inset-bottom)); font-size: 1.35rem; }
+            .lightbox-close { right: 16px; top: max(16px,env(safe-area-inset-top)); }
+            dialog.lightbox-overlay { padding: 16px; }
+        }
     </style>
 </head>
 
@@ -2341,14 +2395,14 @@
                 <span>Viandas · Delivery</span>
             </div>
         </a>
-        <ul class="nav-links">
+        <ul class="nav-links" id="nav-links">
             <li><a href="#como-funciona">¿Cómo funciona?</a></li>
             <li><a href="#menu">Ejemplos de platos</a></li>
             <li><a href="#planes">Planes Mensuales</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
             <li><a href="#contacto" class="btn-nav"><i class="fa-brands fa-whatsapp"></i> Asegurar mi semana</a></li>
         </ul>
-        <button class="hamburger" id="hamburger" aria-label="Menú">
+        <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false" aria-controls="nav-links">
             <span></span><span></span><span></span>
         </button>
     </nav>
@@ -2631,22 +2685,22 @@
 
             <div class="gallery-grid">
                 <div class="gallery-item reveal">
-                    <img src="plato-pollo-pure.webp" alt="Vianda de pollo con puré de calabaza">
+                    <img loading="lazy" decoding="async" width="720" height="1280" src="plato-pollo-pure.webp" alt="Vianda de pollo con puré de calabaza">
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="plato-vegetales-arroz.webp" alt="Vianda saludable de vegetales y arroz">
+                    <img loading="lazy" decoding="async" width="720" height="1280" src="plato-vegetales-arroz.webp" alt="Vianda saludable de vegetales y arroz">
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="plato-gourmet-verde.webp" alt="Plato gourmet con hojas frescas">
+                    <img loading="lazy" decoding="async" width="720" height="1031" src="plato-gourmet-verde.webp" alt="Plato gourmet con hojas frescas">
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="plato-mijo-salteado.webp" alt="Vianda saludable de mijo con vegetales y carne">
+                    <img loading="lazy" decoding="async" width="720" height="1280" src="plato-mijo-salteado.webp" alt="Vianda saludable de mijo con vegetales y carne">
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="plato-pure-huevo-verduras.webp" alt="Almuerzo casero nutritivo de huevo, puré y verduras">
+                    <img loading="lazy" decoding="async" width="720" height="1280" src="plato-pure-huevo-verduras.webp" alt="Almuerzo casero nutritivo de huevo, puré y verduras">
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="plato-pescado.webp" alt="Vianda proteica de pescado sin conservantes">
+                    <img loading="lazy" decoding="async" width="720" height="1280" src="plato-pescado.webp" alt="Vianda proteica de pescado sin conservantes">
                 </div>
             </div>
         </div>
@@ -2771,7 +2825,7 @@
     <section class="quality" id="nosotros">
         <div class="quality-inner">
             <div class="quality-img-wrap reveal">
-                <img src="plato-gourmet-verde.webp" alt="Plato gourmet" class="quality-img">
+                <img loading="lazy" decoding="async" width="720" height="1031" src="plato-gourmet-verde.webp" alt="Plato gourmet" class="quality-img">
                 <div class="quality-img-badge">
                     <i class="fa-solid fa-seedling"></i>
                     <span>Real &amp; Natural</span>
@@ -2823,7 +2877,7 @@
     <section class="chef-section" id="chef">
         <div class="chef-inner">
             <div class="chef-photo reveal">
-                <img src="chef-pikin.webp" alt="Chef Pikin" class="chef-img">
+                <img loading="lazy" decoding="async" width="1600" height="2668" src="chef-pikin.webp" alt="Chef Pikin" class="chef-img">
             </div>
             <div class="chef-content reveal">
                 <div class="sec-tag">Quién cocina</div>
@@ -2990,10 +3044,10 @@
     </a>
 
     <!-- Lightbox Modal -->
-    <div class="lightbox-overlay" id="lightbox">
-        <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <dialog class="lightbox-overlay" id="lightbox" aria-label="Foto del plato ampliada">
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Cerrar imagen">&times;</button>
         <img src="" alt="Imagen ampliada" class="lightbox-content" id="lightbox-img">
-    </div>
+    </dialog>
 
     <script>
         // Nav scrolled
@@ -3081,17 +3135,37 @@
         // Mobile nav toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.querySelector('.nav-links');
+        const setMenuOpen = open => {
+            navLinks.classList.toggle('show', open);
+            hamburger.setAttribute('aria-expanded', String(open));
+        };
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
+            setMenuOpen(hamburger.getAttribute('aria-expanded') !== 'true');
         });
         navLinks.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', () => navLinks.classList.remove('show'));
+            a.addEventListener('click', () => setMenuOpen(false));
+        });
+        document.addEventListener('click', event => {
+            if (!nav.contains(event.target)) setMenuOpen(false);
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
+                setMenuOpen(false);
+                hamburger.focus();
+            }
+        });
+        window.matchMedia('(min-width: 961px)').addEventListener('change', event => {
+            if (event.matches) setMenuOpen(false);
         });
 
         // Lightbox Logic
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxClose = document.getElementById('lightbox-close');
+        let previousOverflow = '';
+        const closeLightbox = () => {
+            if (lightbox.open) lightbox.close();
+        };
 
         document.querySelectorAll('.gallery-item img').forEach(img => {
             const galleryCard = img.closest('.gallery-item');
@@ -3106,24 +3180,44 @@
             });
             galleryCard.addEventListener('click', () => {
                 lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                previousOverflow = document.documentElement.style.overflow;
+                document.documentElement.style.overflow = 'hidden';
+                lightbox.showModal();
                 lightbox.classList.add('active');
+                lightboxClose.focus();
             });
         });
 
-        lightboxClose.addEventListener('click', () => {
-            lightbox.classList.remove('active');
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('keydown', event => {
+            if (event.key === 'Tab') {
+                event.preventDefault();
+                lightboxClose.focus();
+            }
         });
 
         lightbox.addEventListener('click', (e) => {
-            if (e.target !== lightboxImg) {
-                lightbox.classList.remove('active');
-            }
+            if (e.target === lightbox) closeLightbox();
         });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                lightbox.classList.remove('active');
-            }
+        lightbox.addEventListener('close', () => {
+            lightbox.classList.remove('active');
+            document.documentElement.style.overflow = previousOverflow;
+        });
+
+        // Keep a single prominent WhatsApp action visible at a time.
+        const floatingWhatsApp = document.getElementById('wa-float');
+        const visibleWhatsAppActions = new Set();
+        const whatsAppObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio >= .6) visibleWhatsAppActions.add(entry.target);
+                else visibleWhatsAppActions.delete(entry.target);
+            });
+            floatingWhatsApp.classList.toggle('is-suppressed', visibleWhatsAppActions.size > 0);
+        }, { threshold: [0, .6, 1], rootMargin: '-70px 0px 0px 0px' });
+        document.querySelectorAll('.hero-actions a[href*="wa.me"], .pc-action a, .testi-cta a, #cta-wa').forEach(button => {
+            whatsAppObserver.observe(button);
         });
     </script>
 </body>
