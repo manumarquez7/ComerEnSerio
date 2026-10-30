@@ -1909,6 +1909,144 @@
         .gallery-item {
             cursor: pointer;
         }
+        /* Hero editorial */
+        .hero-section {
+            padding-top: 70px;
+            background: var(--cream);
+            overflow: hidden;
+        }
+        .hero-section .hero {
+            max-width: 1440px;
+            min-height: min(850px, calc(100svh - 70px));
+            padding: 56px 48px 52px;
+            grid-template-columns: 1fr 1.05fr;
+            gap: clamp(32px, 4vw, 64px);
+        }
+        .hero-text { min-width: 0; position: relative; z-index: 1; }
+        .hero-section .hero-tags-wrapper { gap: 8px; margin-bottom: 24px; }
+        .hero-section .hero-tag {
+            font-size: 10px;
+            padding: 7px 12px;
+            letter-spacing: .055em;
+        }
+        .hero-section .hero-title {
+            font-size: clamp(44px, 4.8vw, 72px);
+            letter-spacing: -.045em;
+            line-height: 1.04;
+            margin-bottom: 18px;
+        }
+        .hero-section .hero-title em {
+            font-size: .51em;
+            letter-spacing: -.025em;
+            line-height: 1.22;
+            margin-top: 14px;
+        }
+        .hero-section .hero-sub {
+            max-width: 560px;
+            font-size: clamp(15px, 1.3vw, 18px);
+            line-height: 1.55;
+            margin-bottom: 12px;
+        }
+        .hero-delivery {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-soft);
+            font-size: 15px;
+            line-height: 1.55;
+        }
+        .hero-delivery i {
+            flex: 0 0 25px;
+            width: 25px;
+            height: 25px;
+            display: grid;
+            place-items: center;
+            background: #ede6fb;
+            color: #8056ce;
+            border-radius: 50%;
+            font-size: 13px;
+        }
+        .hero-promise { color: var(--text-soft); font-size: 16px; line-height: 1.5; margin: 22px 0; }
+        .hero-promise strong { color: var(--green-dark); font-weight: 600; }
+        .hero-section .hero-actions {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .hero-section .hero-actions a {
+            justify-content: center;
+            padding: 15px 18px;
+            font-size: 13px;
+            white-space: nowrap;
+            min-height: 50px;
+        }
+        .hero-section .hero-actions .btn-primary { flex: 1.15; }
+        .hero-section .hero-actions .btn-ghost { flex: 1; border-color: #dfd2bb; }
+        .hero-section .hero-actions a:focus-visible { outline: 3px solid var(--earth); outline-offset: 4px; }
+        .hero-microcopy { font-size: 11px; color: var(--text-soft); line-height: 1.65; margin-bottom: 28px; }
+        .hero-microcopy i { color: #ee6c63; margin-right: 5px; }
+        .hero-microcopy strong { font-weight: 600; }
+        .hero-microcopy span { padding-left: 17px; }
+        .hero-reviews { display: flex; align-items: center; gap: 10px; font-size: 11px; color: var(--text-soft); line-height: 1.6; margin-bottom: 12px; }
+        .hero-reviews > span { color: #eab213; font-size: 18px; letter-spacing: 1px; white-space: nowrap; }
+        .hero-section .hero-trust { gap: 28px; }
+        .hero-section .trust-item + .trust-item { border-left: 1px solid #dfd2bb; padding-left: 28px; }
+        .hero-section .trust-num { font-size: 30px; }
+        .hero-section .trust-label { font-size: 11px; }
+        .hero-section .hero-visual { max-width: none; width: 100%; margin: 0; isolation: isolate; }
+        .hero-section .hero-visual::before {
+            content: '';
+            position: absolute;
+            inset: -6% -7% -6% 9%;
+            z-index: -1;
+            border-radius: 46% 54% 42% 58% / 36% 40% 60% 64%;
+            background: #dfe2c8;
+            transform: rotate(-8deg);
+        }
+        .hero-section .hero-img-wrap {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1.06;
+            border-radius: 30px;
+            padding: 0;
+            box-shadow: 0 24px 48px rgba(59, 47, 30, .12);
+        }
+        .hero-section .hero-img-main { display: block; object-position: center; transform: none; }
+        .hero-section .hero-img-overlay { display: none; }
+        .hero-section .hb2 { bottom: 24px; right: 24px; padding: 13px 19px; border-radius: 50px; font-size: 13px; animation: none; }
+        @media (min-width: 961px) and (max-width: 1150px) {
+            .hero-section .hero { padding: 40px 32px; gap: 28px; }
+            .hero-section .hero-actions a { font-size: 11px; padding: 13px 11px; }
+        }
+        @media (max-width: 960px) {
+            .hero-section .hero { grid-template-columns: 1fr; max-width: 720px; min-height: auto; padding: 38px 28px 48px; gap: 40px; text-align: left; }
+            .hero-section .hero-title { font-size: clamp(42px, 8vw, 64px); }
+            .hero-section .hero-sub { margin-left: 0; margin-right: 0; }
+            .hero-section .hero-actions, .hero-section .hero-trust { justify-content: flex-start; }
+            .hero-section .hero-visual { max-width: 600px; }
+            .hero-section .hero-img-wrap { aspect-ratio: 1.15; }
+        }
+        @media (max-width: 600px) {
+            .hero-section .hero { padding: 28px 22px 40px; gap: 32px; }
+            .hero-section .hero-tags-wrapper { margin-bottom: 20px !important; gap: 6px !important; }
+            .hero-section .hero-tag { font-size: 8px; padding: 6px 9px; letter-spacing: .02em; }
+            .hero-section .hero-title { font-size: clamp(36px, 10.3vw, 52px); }
+            .hero-section .hero-title em { font-size: .56em; }
+            .hero-section .hero-sub { font-size: 15px; }
+            .hero-delivery { font-size: 13px; align-items: flex-start; }
+            .hero-promise { font-size: 14px; margin: 18px 0; }
+            .hero-section .hero-actions { flex-direction: column; gap: 10px; }
+            .hero-section .hero-actions a { width: 100%; font-size: 14px; }
+            .hero-microcopy { font-size: 10px; margin-bottom: 22px; }
+            .hero-reviews { align-items: flex-start; gap: 8px; font-size: 10px; }
+            .hero-reviews > span { font-size: 15px; }
+            .hero-section .hero-img-wrap { border-radius: 24px; aspect-ratio: 1; }
+            .hero-section .hb2 { bottom: 16px; right: 16px; font-size: 11px; padding: 11px 15px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-section * { animation: none !important; transition: none !important; }
+        }
     </style>
 </head>
 
@@ -1936,8 +2074,7 @@
     </nav>
 
     <!-- ══ HERO ══════════════════════════════════════════ -->
-    <div class="hero-bg-blob"></div>
-    <section style="min-height:100vh; padding-top:70px; background:var(--cream);">
+    <section class="hero-section">
         <div class="hero">
             <div class="hero-text">
                 <div class="hero-tags-wrapper"
@@ -1952,38 +2089,23 @@
                 </div>
                 <h1 class="hero-title">
                     Dejá de cocinar todos los días.
-                    <em>Resolvemos tus almuerzos de lunes a viernes</em>
+                    <em>Resolvemos tus almuerzos de<br>lunes a viernes</em>
                 </h1>
 
-                <p class="hero-sub">
-                    Comida real. Equilibrio nutricional. Técnica profesional. Sabor extraordinario.<br>
-                    ✔️ Te lo llevamos a tu puerta, de lunes a viernes<br><br>
-                    <span style="display:block; margin-bottom: 0.3rem; font-weight: 500;">No vendemos platos
-                        sueltos.</span>
-                    <strong style="color: var(--green-dark); font-size: 1.05rem;">Resolvemos tu semana entera de
-                        almuerzos.</strong>
-                </p>
-                <div class="hero-actions" style="align-items: flex-start; gap: 1.5rem;">
-                    <div style="display:flex; flex-direction:column; width: max-content;">
+                <p class="hero-sub">Comida real. Equilibrio nutricional. Técnica profesional. Sabor extraordinario.</p>
+                <p class="hero-delivery"><i class="fa-solid fa-check" aria-hidden="true"></i> Te lo llevamos a tu puerta, de lunes a viernes</p>
+                <p class="hero-promise">No vendemos platos sueltos.<br><strong>Resolvemos tu semana entera de almuerzos.</strong></p>
+                <div class="hero-actions">
                         <a href="https://wa.me/5492964472865?text=Hola.%20Quiero%20asegurar%20mis%20almuerzos%20de%20esta%20semana.%20%C2%BFQuedan%20lugares?"
                             target="_blank" class="btn-primary" id="hero-cta">
                             <i class="fa-brands fa-whatsapp"></i> Asegurar mi semana ahora
                         </a>
-                        <!-- Gatillo mental y de capacidad -->
-                        <span class="microcopy">
-                            <i class="fa-solid fa-utensils" style="color: #ff6b6b; margin-right: 2px;"></i> Solo 40
-                            viandas por día · los cupos se llenan rápido
-                            <br><span
-                                style="font-weight: 500; opacity: 0.8; margin-top: 4px; display: inline-block;">Sin
-                                compromiso · Respondemos en minutos</span>
-                        </span>
-                    </div>
-                    <a href="#menu" class="btn-ghost" id="hero-menu" style="margin-top: 0.15rem;">
+                    <a href="#menu" class="btn-ghost" id="hero-menu">
                         <i class="fa-solid fa-utensils"></i> Ver ejemplos de platos
                     </a>
                 </div>
-                <p style="font-size:0.8rem; color:var(--text-soft); margin-top:-1.5rem; margin-bottom:0.5rem;">⭐⭐⭐⭐⭐
-                    Clientes que repiten semana a semana en Río Grande.</p>
+                <p class="hero-microcopy"><i class="fa-solid fa-utensils" aria-hidden="true"></i> <strong>Solo 40 viandas por día · los cupos se llenan rápido</strong><br><span>Sin compromiso · Respondemos en minutos</span></p>
+                <p class="hero-reviews"><span aria-label="5 estrellas">★★★★★</span> Clientes que repiten semana a semana en Río Grande.</p>
                 <div class="hero-trust">
                     <div class="trust-item">
                         <span class="trust-num">Diaria</span>
@@ -1998,7 +2120,7 @@
 
             <div class="hero-visual">
                 <div class="hero-img-wrap">
-                    <img src="hero-plato.webp"
+                    <img src="hero-plato-v2.webp" width="1254" height="1254" fetchpriority="high"
                         alt="Vianda casera de pollo con vegetales frescos lista para delivery"
                         class="hero-img-main">
                     <div class="hero-img-overlay"></div>
