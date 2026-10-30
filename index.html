@@ -2027,15 +2027,17 @@
             .hero-section .hero-actions a { font-size: 11px; padding: 13px 11px; }
         }
         @media (max-width: 960px) {
-            .hero-section .hero { grid-template-columns: 1fr; max-width: 720px; min-height: auto; padding: 38px 28px 48px; gap: 40px; text-align: left; }
+            .hero-section .hero { grid-template-columns: 1fr; max-width: 720px; min-height: auto; padding: 38px 28px 48px; gap: 56px; text-align: left; }
             .hero-section .hero-title { font-size: clamp(42px, 8vw, 64px); }
             .hero-section .hero-sub { margin-left: 0; margin-right: 0; }
             .hero-section .hero-actions, .hero-section .hero-trust { justify-content: flex-start; }
             .hero-section .hero-visual { max-width: 600px; }
+            .hero-section .hero-visual::before { top: 0; }
+            .hero-section .trust-label { line-height: 1.5; }
             .hero-section .hero-img-wrap { aspect-ratio: 1.15; }
         }
         @media (max-width: 600px) {
-            .hero-section .hero { padding: 28px 22px 40px; gap: 32px; }
+            .hero-section .hero { padding: 28px 22px 40px; gap: 56px; }
             .hero-section .hero-tags-wrapper { margin-bottom: 20px !important; gap: 6px !important; }
             .hero-section .hero-tag { font-size: 8px; padding: 6px 9px; letter-spacing: .02em; }
             .hero-section .hero-title { font-size: clamp(36px, 10.3vw, 52px); }
