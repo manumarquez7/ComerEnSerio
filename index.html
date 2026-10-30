@@ -1395,7 +1395,6 @@
             font-size: 1.55rem;
             text-decoration: none;
             box-shadow: 0 6px 24px rgba(37, 211, 102, .5);
-            animation: pulse-wa 2.5s ease-in-out infinite;
             transition: var(--trans);
         }
 
@@ -1404,16 +1403,18 @@
             box-shadow: 0 8px 30px rgba(37, 211, 102, .65);
         }
 
-        @keyframes pulse-wa {
-
-            0%,
-            100% {
-                box-shadow: 0 6px 24px rgba(37, 211, 102, .5), 0 0 0 0 rgba(37, 211, 102, .35);
-            }
-
-            50% {
-                box-shadow: 0 6px 24px rgba(37, 211, 102, .5), 0 0 0 14px rgba(37, 211, 102, 0);
-            }
+        .wa-float::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(37,211,102,.6);
+            border-radius: inherit;
+            animation: whatsapp-ring 2.8s ease-out infinite;
+            pointer-events: none;
+        }
+        @keyframes whatsapp-ring {
+            0%,20% { transform: scale(1); opacity: .65; }
+            90%,100% { transform: scale(1.5); opacity: 0; }
         }
 
         /* ══════════════════ NUEVAS SECCIONES (IDEAL, CHEF, TABLA) ══════════════════ */
@@ -2430,6 +2431,8 @@
         @media (prefers-reduced-motion: reduce) {
             .photo-frame img, .quality-img-wrap, .chef-photo, .quality-img-badge, .nav-logo-icon, .hero-tag, .trust-item, .plans-perks span { transform: none !important; }
         }
+        .hero-section.ambient-idle .hero-visual::before { animation-play-state: paused; }
+        :root.page-idle *, :root.page-idle *::before, :root.page-idle *::after { animation-play-state: paused !important; }
     </style>
 </head>
 
@@ -2503,7 +2506,7 @@
 
             <div class="hero-visual">
                 <div class="hero-img-wrap">
-                    <img src="hero-plato-v2.webp" width="1254" height="1254" fetchpriority="high"
+                    <img srcset="assets/optimized/hero-plato-v2-mobile.webp 560w, assets/optimized/hero-plato-v2-medium.webp 840w, assets/optimized/hero-plato-v2.webp 1120w" sizes="(max-width: 600px) 100vw, (max-width: 960px) 600px, 50vw" src="assets/optimized/hero-plato-v2.webp" width="1120" height="1120" fetchpriority="high"
                         alt="Vianda casera de pollo con vegetales frescos lista para delivery"
                         class="hero-img-main">
                     <div class="hero-img-overlay"></div>
@@ -2734,22 +2737,22 @@
 
             <div class="gallery-grid">
                 <div class="gallery-item reveal">
-                    <img loading="lazy" decoding="async" width="720" height="1280" src="plato-pollo-pure.webp" alt="Vianda de pollo con puré de calabaza">
+                    <img loading="lazy" decoding="async" width="720" height="1280" src="assets/optimized/plato-pollo-pure.webp" alt="Vianda de pollo con puré de calabaza">
                 </div>
                 <div class="gallery-item reveal">
-                    <img loading="lazy" decoding="async" width="720" height="1280" src="plato-vegetales-arroz.webp" alt="Vianda saludable de vegetales y arroz">
+                    <img loading="lazy" decoding="async" width="720" height="1280" src="assets/optimized/plato-vegetales-arroz.webp" alt="Vianda saludable de vegetales y arroz">
                 </div>
                 <div class="gallery-item reveal">
-                    <img loading="lazy" decoding="async" width="720" height="1031" src="plato-gourmet-verde.webp" alt="Plato gourmet con hojas frescas">
+                    <img loading="lazy" decoding="async" width="720" height="1031" src="assets/optimized/plato-gourmet-verde.webp" alt="Plato gourmet con hojas frescas">
                 </div>
                 <div class="gallery-item reveal">
-                    <img loading="lazy" decoding="async" width="720" height="1280" src="plato-mijo-salteado.webp" alt="Vianda saludable de mijo con vegetales y carne">
+                    <img loading="lazy" decoding="async" width="720" height="1280" src="assets/optimized/plato-mijo-salteado.webp" alt="Vianda saludable de mijo con vegetales y carne">
                 </div>
                 <div class="gallery-item reveal">
-                    <img loading="lazy" decoding="async" width="720" height="1280" src="plato-pure-huevo-verduras.webp" alt="Almuerzo casero nutritivo de huevo, puré y verduras">
+                    <img loading="lazy" decoding="async" width="720" height="1280" src="assets/optimized/plato-pure-huevo-verduras.webp" alt="Almuerzo casero nutritivo de huevo, puré y verduras">
                 </div>
                 <div class="gallery-item reveal">
-                    <img loading="lazy" decoding="async" width="720" height="1280" src="plato-pescado.webp" alt="Vianda proteica de pescado sin conservantes">
+                    <img loading="lazy" decoding="async" width="720" height="1280" src="assets/optimized/plato-pescado.webp" alt="Vianda proteica de pescado sin conservantes">
                 </div>
             </div>
         </div>
@@ -2875,7 +2878,7 @@
         <div class="quality-inner">
             <div class="quality-img-wrap reveal">
                 <div class="photo-frame">
-                <img loading="lazy" decoding="async" width="720" height="1031" src="plato-gourmet-verde.webp" alt="Plato gourmet" class="quality-img">
+                <img loading="lazy" decoding="async" width="720" height="1031" src="assets/optimized/plato-gourmet-verde.webp" alt="Plato gourmet" class="quality-img">
                 </div>
                 <div class="quality-img-badge">
                     <i class="fa-solid fa-seedling"></i>
@@ -2929,7 +2932,7 @@
         <div class="chef-inner">
             <div class="chef-photo reveal">
                 <div class="photo-frame">
-                <img loading="lazy" decoding="async" width="1600" height="2668" src="chef-pikin.webp" alt="Chef Pikin" class="chef-img">
+                <img srcset="assets/optimized/chef-pikin-mobile.webp 560w, assets/optimized/chef-pikin.webp 1120w" sizes="(max-width: 600px) 70vw, (max-width: 960px) 400px, 45vw" loading="lazy" decoding="async" width="1120" height="1868" src="assets/optimized/chef-pikin.webp" alt="Chef Pikin" class="chef-img">
                 </div>
             </div>
             <div class="chef-content reveal">
@@ -3133,6 +3136,11 @@
         // Actual pointer events also support previews that report touch capabilities.
         const pointerMotion = window.matchMedia('(prefers-reduced-motion: no-preference)');
         const root = document.documentElement;
+        const ambientObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => entry.target.classList.toggle('ambient-idle', !entry.isIntersecting));
+        });
+        ambientObserver.observe(document.querySelector('.hero-section'));
+        document.addEventListener('visibilitychange', () => root.classList.toggle('page-idle', document.hidden));
         if (pointerMotion.matches && window.matchMedia('(any-hover: hover) and (any-pointer: fine)').matches) {
             root.classList.add('mouse-effects');
         }
