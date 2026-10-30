@@ -2496,7 +2496,7 @@
             .quality-img-wrap .photo-frame { aspect-ratio: 1.2; }
             .quality-img-badge { width: 86px; height: 86px; right: 12px; bottom: -18px; border-width: 3px; }
             .chef-photo { width: 100%; max-width: 360px; }
-            .nav-links.show { animation: mobile-menu .25s ease-out; }
+            .nav-links.show { animation: mobile-menu .4s ease-out; }
             .nav-links a { min-height: 44px; display: inline-flex; align-items: center; }
             .nav-links .btn-nav { min-height: 44px; }
         }
@@ -2568,17 +2568,27 @@
             .payment-method { min-height: 52px; }
         }
         @media (max-width: 960px) and (prefers-reduced-motion: no-preference) {
-            .mobile-entrance.motion-seen { animation: mobile-rise .65s cubic-bezier(.2,.7,.2,1) var(--mobile-delay,0s) backwards; }
-            .photo-frame.mobile-entrance.motion-seen, .hero-img-wrap.mobile-entrance.motion-seen { animation-name: mobile-photo; animation-duration: .8s; }
-            :is(.btn-primary, .btn-wa).motion-seen::after, .pc-row.motion-seen .btn-pedir::after { animation: button-shine .8s ease .35s; }
-            .step-card.motion-seen .step-num { animation: step-halo 1s ease-out; }
+            .reveal { transition: opacity .9s ease, transform .9s cubic-bezier(.2,.65,.3,1); }
+            .target-grid.visible .t-card { animation: none; }
+            .mobile-entrance { animation: none !important; }
+            .mobile-motion-ready .mobile-entrance {
+                transition: opacity .9s ease, transform .9s cubic-bezier(.2,.65,.3,1), box-shadow .4s ease;
+                transition-delay: var(--mobile-delay,0s), var(--mobile-delay,0s), 0s;
+            }
+            .mobile-motion-ready .mobile-entrance:not(.motion-seen) { opacity: 0; transform: translateY(12px); }
+            .mobile-motion-ready .mobile-entrance.motion-seen { opacity: 1; transform: none; }
+            :is(.btn-primary, .btn-wa).motion-seen::after, .pc-row.motion-seen .btn-pedir::after { animation: none; }
+            .hero-text > * { animation-duration: 1s; }
+            .wa-float::before { animation-duration: 4.5s; }
+            .button-ripple { animation-duration: .85s; background: rgba(255,255,255,.24); }
+            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):active { transform: scale(.995); }
             .sec-title em { background-image: linear-gradient(rgba(124,181,24,.16),rgba(124,181,24,.16)); background-position: 0 95%; background-size: 0 .2em; background-repeat: no-repeat; transition: background-size .8s ease; }
             .visible .sec-title em { background-size: 100% .2em; }
-            .t-card, .service-card, .payment-method, .testi-card, .pc-row, .qperk, .photo-frame, .delivery-card, .menu-card, .plans-note { transition: scale .2s ease, box-shadow .25s ease, transform .35s ease, opacity .7s ease; }
-            .touch-active { scale: .98; box-shadow: 0 8px 26px rgba(124,181,24,.22) !important; }
+            .t-card, .service-card, .payment-method, .testi-card, .pc-row, .qperk, .photo-frame, .delivery-card, .menu-card, .plans-note { transition: box-shadow .4s ease, transform .9s ease, opacity .9s ease; }
+            .touch-active { box-shadow: 0 6px 22px rgba(124,181,24,.16) !important; }
             .touch-active::before, .photo-frame.touch-active::after { opacity: 1; }
-            .touch-active .t-icon, .touch-active .qperk-icon { background-color: var(--green); color: white; }
-            .touch-active .t-icon i, .touch-active .step-num i, .payment-method.touch-active i { animation: icon-greet .5s ease; }
+            .t-icon, .qperk-icon { transition: background-color .4s ease, color .4s ease; }
+            .touch-active .t-icon, .touch-active .qperk-icon { background-color: var(--green-soft); color: var(--green-dark); }
         }
         @media (prefers-reduced-motion: reduce) {
             .touch-active { scale: 1; }
@@ -3331,18 +3341,18 @@
             });
         });
         document.querySelectorAll('.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa').forEach(button => {
-            button.addEventListener('pointerdown', event => {
+            button.addEventListener('click', event => {
                 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
                 button.querySelectorAll('.button-ripple').forEach(ripple => ripple.remove());
                 const box = button.getBoundingClientRect();
                 const ripple = document.createElement('span');
                 ripple.className = 'button-ripple';
                 ripple.setAttribute('aria-hidden', 'true');
-                ripple.style.left = `${event.clientX - box.left}px`;
-                ripple.style.top = `${event.clientY - box.top}px`;
+                ripple.style.left = `${event.detail ? event.clientX - box.left : box.width / 2}px`;
+                ripple.style.top = `${event.detail ? event.clientY - box.top : box.height / 2}px`;
                 button.appendChild(ripple);
                 ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
-                setTimeout(() => ripple.remove(), 800);
+                setTimeout(() => ripple.remove(), 1200);
             }, { passive: true });
         });
         let progressFrame = 0;
@@ -3361,11 +3371,12 @@
 
         // Mobile responds to scrolling and touch, without depending on hover.
         const mobileMotion = window.matchMedia('(max-width: 960px) and (prefers-reduced-motion: no-preference)');
+        root.classList.toggle('mobile-motion-ready', mobileMotion.matches);
         const mobileSurfaces = document.querySelectorAll('.t-card, .service-card, .payment-method, .photo-frame, .hero-img-wrap, .pc-row:not(.pc-header), .testi-card, .step-card, .btn-primary, .btn-wa');
         mobileSurfaces.forEach(surface => {
             surface.classList.add('mobile-entrance');
             const siblings = [...surface.parentElement.children];
-            surface.style.setProperty('--mobile-delay', `${Math.min(siblings.indexOf(surface), 3) * .06}s`);
+            surface.style.setProperty('--mobile-delay', `${Math.min(siblings.indexOf(surface), 3) * .05}s`);
         });
         const mobileObserver = new IntersectionObserver(entries => {
             if (!mobileMotion.matches) return;
@@ -3375,9 +3386,10 @@
                     mobileObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: .12 });
+        }, { threshold: .04, rootMargin: '0px 0px 48px 0px' });
         mobileSurfaces.forEach(surface => mobileObserver.observe(surface));
         mobileMotion.addEventListener('change', event => {
+            root.classList.toggle('mobile-motion-ready', event.matches);
             if (event.matches) mobileSurfaces.forEach(surface => {
                 if (!surface.classList.contains('motion-seen')) mobileObserver.observe(surface);
             });
@@ -3399,7 +3411,6 @@
             const bounds = surface.getBoundingClientRect();
             surface.style.setProperty('--pointer-x', `${event.clientX - bounds.left}px`);
             surface.style.setProperty('--pointer-y', `${event.clientY - bounds.top}px`);
-            surface.classList.add('touch-active');
             touchedSurface = surface;
             touchOrigin = { x: event.clientX, y: event.clientY };
         }, { passive: true });
@@ -3407,7 +3418,10 @@
             if (touchOrigin && Math.hypot(event.clientX - touchOrigin.x, event.clientY - touchOrigin.y) > 12) clearTouchSurface();
         }, { passive: true });
         document.addEventListener('pointerup', () => {
-            touchReleaseTimer = setTimeout(clearTouchSurface, 180);
+            if (!touchedSurface || !touchOrigin) return;
+            touchedSurface.classList.add('touch-active');
+            touchOrigin = null;
+            touchReleaseTimer = setTimeout(clearTouchSurface, 360);
         }, { passive: true });
         document.addEventListener('pointercancel', clearTouchSurface, { passive: true });
 
