@@ -2108,46 +2108,46 @@
         @keyframes hero-arrive { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes hero-breathe { 0%,100% { transform: rotate(-8deg) scale(1); } 50% { transform: rotate(-3deg) scale(1.035); } }
         @keyframes button-shine { to { left: 145%; } }
-        @media (hover: hover) and (pointer: fine) {
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover::after { animation: button-shine .65s ease; }
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover {
+        @media (prefers-reduced-motion: no-preference) {
+            :where(.mouse-effects) :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover::after { animation: button-shine .65s ease; }
+            :where(.mouse-effects) :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover {
                 transform: translateY(-3px);
                 box-shadow: 0 10px 26px rgba(89,124,24,.25);
             }
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover i { transform: rotate(-9deg) scale(1.18); }
-            :is(.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header)) {
+            :where(.mouse-effects) :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover i { transform: rotate(-9deg) scale(1.18); }
+            :where(.mouse-effects) :is(.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header)) {
                 background-image: radial-gradient(280px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgba(124,181,24,.13), transparent 75%);
                 background-repeat: no-repeat;
                 background-size: 0 0;
                 transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease, background-color .3s ease, opacity .7s ease;
             }
-            :is(.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header)):hover { background-size: 100% 100%; }
-            :is(.t-card, .testi-card).visible:hover, .t-card:hover {
+            :where(.mouse-effects) :is(.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header)):hover { background-size: 100% 100%; }
+            :where(.mouse-effects) :is(.t-card, .testi-card).visible:hover, :where(.mouse-effects) .t-card:hover {
                 transform: translateY(-8px);
                 border-color: rgba(124,181,24,.45);
                 box-shadow: 0 18px 36px rgba(59,47,30,.12);
             }
-            .menu-card.visible:hover { transform: translate(6px,-3px); box-shadow: 0 12px 28px rgba(59,47,30,.12); }
-            .t-icon, .qperk-icon, .feat-item i { transition: transform .35s ease, background-color .35s ease, color .35s ease; }
-            .t-card:hover .t-icon { transform: translateY(-3px) rotate(-8deg) scale(1.12); }
-            .qperk:hover .qperk-icon { transform: rotate(-8deg) scale(1.1); }
-            .feat-item:hover i { transform: translateY(-3px) rotate(-8deg); }
-            .pc-row:not(.pc-header):hover { box-shadow: inset 4px 0 var(--green), inset 0 0 0 1px rgba(124,181,24,.18); }
-            .pc-row .pc-price { transition: transform .3s ease; transform-origin: left; }
-            .pc-row:hover .pc-price { transform: scale(1.06); }
-            .gallery-item.visible:hover { transform: translateY(-8px); box-shadow: 0 20px 36px rgba(59,47,30,.2); }
-            .gallery-item:hover img { transform: scale(1.1) rotate(.7deg); }
-            .gallery-item::after { background: radial-gradient(circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(255,255,255,.22), transparent 55%), linear-gradient(to top, rgba(0,0,0,.16), transparent); }
-            .hero-section .hero-img-wrap {
+            :where(.mouse-effects) .menu-card.visible:hover { transform: translate(6px,-3px); box-shadow: 0 12px 28px rgba(59,47,30,.12); }
+            :where(.mouse-effects) .t-icon, :where(.mouse-effects) .qperk-icon, :where(.mouse-effects) .feat-item i { transition: transform .35s ease, background-color .35s ease, color .35s ease; }
+            :where(.mouse-effects) .t-card:hover .t-icon { transform: translateY(-3px) rotate(-8deg) scale(1.12); }
+            :where(.mouse-effects) .qperk:hover .qperk-icon { transform: rotate(-8deg) scale(1.1); }
+            :where(.mouse-effects) .feat-item:hover i { transform: translateY(-3px) rotate(-8deg); }
+            :where(.mouse-effects) .pc-row:not(.pc-header):hover { box-shadow: inset 4px 0 var(--green), inset 0 0 0 1px rgba(124,181,24,.18); }
+            :where(.mouse-effects) .pc-row .pc-price { transition: transform .3s ease; transform-origin: left; }
+            :where(.mouse-effects) .pc-row:hover .pc-price { transform: scale(1.06); }
+            :where(.mouse-effects) .gallery-item.visible:hover { transform: translateY(-8px); box-shadow: 0 20px 36px rgba(59,47,30,.2); }
+            :where(.mouse-effects) .gallery-item:hover img { transform: scale(1.1) rotate(.7deg); }
+            :where(.mouse-effects) .gallery-item::after { background: radial-gradient(circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(255,255,255,.22), transparent 55%), linear-gradient(to top, rgba(0,0,0,.16), transparent); }
+            :where(.mouse-effects) .hero-section .hero-img-wrap {
                 transform: perspective(1100px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
                 transition: transform .35s ease, box-shadow .35s ease;
             }
-            .hero-section .hero-img-wrap:hover { box-shadow: 0 30px 65px rgba(59,47,30,.2); }
-            .hero-section .hero-img-main { transition: transform .6s ease; }
-            .hero-section .hero-img-wrap:hover .hero-img-main { transform: scale(1.035); }
-            .quality-img, .chef-img { transition: filter .5s ease, box-shadow .5s ease; }
-            .quality-img:hover, .chef-img:hover { filter: saturate(1.1); box-shadow: 0 20px 45px rgba(59,47,30,.2); }
-            .wa-float:hover { transform: translateY(-5px) rotate(-8deg) scale(1.08); }
+            :where(.mouse-effects) .hero-section .hero-img-wrap:hover { box-shadow: 0 30px 65px rgba(59,47,30,.2); }
+            :where(.mouse-effects) .hero-section .hero-img-main { transition: transform .6s ease; }
+            :where(.mouse-effects) .hero-section .hero-img-wrap:hover .hero-img-main { transform: scale(1.035); }
+            :where(.mouse-effects) .quality-img, :where(.mouse-effects) .chef-img { transition: filter .5s ease, box-shadow .5s ease; }
+            :where(.mouse-effects) .quality-img:hover, :where(.mouse-effects) .chef-img:hover { filter: saturate(1.1); box-shadow: 0 20px 45px rgba(59,47,30,.2); }
+            :where(.mouse-effects) .wa-float:hover { transform: translateY(-5px) rotate(-8deg) scale(1.08); }
         }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto !important; }
@@ -2257,43 +2257,43 @@
         .target-grid.visible .t-card:nth-child(2) { animation-delay: .08s; }
         .target-grid.visible .t-card:nth-child(3) { animation-delay: .16s; }
         .target-grid.visible .t-card:nth-child(4) { animation-delay: .24s; }
-        @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover {
+        @media (prefers-reduced-motion: no-preference) {
+            :where(.mouse-effects) :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover {
                 transform: translateY(-4px) scale(1.025);
                 box-shadow: 0 12px 30px rgba(102,148,22,.32), 0 0 0 5px rgba(124,181,24,.09);
             }
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover::before { opacity: 1; }
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover i { animation: icon-greet .55s ease; }
-            .feat-item:hover { color: white; transform: translateY(-3px); }
-            .feat-item:hover::after { transform: scaleX(1); }
-            .feat-item:hover i { transform: scale(1.25) rotate(-12deg); filter: drop-shadow(0 0 7px rgba(175,222,80,.5)); }
-            :is(.t-card, .testi-card, .service-card, .delivery-card, .plans-note, .qperk):hover::before { opacity: 1; border-color: rgba(124,181,24,.5); }
-            .t-card:hover, .testi-card.visible:hover, .service-card:hover, .delivery-card:hover, .plans-note:hover {
+            :where(.mouse-effects) :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover::before { opacity: 1; }
+            :where(.mouse-effects) :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover i { animation: icon-greet .55s ease; }
+            :where(.mouse-effects) .feat-item:hover { color: white; transform: translateY(-3px); }
+            :where(.mouse-effects) .feat-item:hover::after { transform: scaleX(1); }
+            :where(.mouse-effects) .feat-item:hover i { transform: scale(1.25) rotate(-12deg); filter: drop-shadow(0 0 7px rgba(175,222,80,.5)); }
+            :where(.mouse-effects) :is(.t-card, .testi-card, .service-card, .delivery-card, .plans-note, .qperk):hover::before { opacity: 1; border-color: rgba(124,181,24,.5); }
+            :where(.mouse-effects) .t-card:hover, :where(.mouse-effects) .testi-card.visible:hover, :where(.mouse-effects) .service-card:hover, :where(.mouse-effects) .delivery-card:hover, :where(.mouse-effects) .plans-note:hover {
                 transform: perspective(1000px) translateY(-8px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
                 box-shadow: 0 22px 44px rgba(59,47,30,.16);
             }
-            .t-card:hover .t-icon { background: var(--green); color: white; transform: translateY(-5px) scale(1.12); box-shadow: 0 8px 20px rgba(124,181,24,.3); }
-            .t-card:hover .t-icon i { animation: icon-greet .6s ease; }
-            .t-card:hover h4 { color: var(--green-dark); }
-            .step-card:hover .step-num { animation: step-halo 1.2s ease-out 2; }
-            .step-card:hover .step-num::after { opacity: 1; transform: scale(1.04); }
-            .step-card:hover .step-num i { transform: rotate(-12deg) scale(1.15); }
-            .step-card:hover h4 { color: var(--green-dark); transform: translateY(-3px); }
-            .delivery-card:hover i, .service-card:hover i { animation: icon-greet .65s ease; }
-            .service-card:hover { box-shadow: 0 16px 35px rgba(0,0,0,.22) !important; }
-            .service-card-monthly::before { background: radial-gradient(330px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(255,255,255,.24), transparent 72%); }
-            .gallery-item.visible:hover { transform: translateY(-9px) scale(1.015); }
-            .gallery-item:hover::before, .gallery-item:focus-visible::before { opacity: 1; transform: translateY(0) rotate(0); }
-            .gallery-item:hover img { transform: scale(1.14) rotate(1deg); filter: saturate(1.08); }
-            .pc-row:not(.pc-header):hover { box-shadow: inset 5px 0 var(--green), inset 0 0 0 1px rgba(124,181,24,.3); background-image: radial-gradient(400px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(124,181,24,.2), transparent 75%); }
-            .pc-row:hover .pc-title { transform: translateX(5px); color: var(--green-dark); }
-            .pc-row:hover .pc-badge { transform: translateY(-2px); }
-            .plans-note:hover strong { transform: translateY(-1px); }
-            .qperk:hover { transform: translateX(7px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
-            .qperk:hover .qperk-icon { background: var(--green); color: white; transform: rotate(-8deg) scale(1.08); }
-            .qperk:hover .qperk-text strong { color: #d8efab; transform: translateX(2px); }
-            .testi-card:hover .testi-stars i { animation: star-jump .55s ease var(--star-delay,0s); }
-            .testi-card:hover .testi-av { transform: rotate(-8deg) scale(1.12); }
+            :where(.mouse-effects) .t-card:hover .t-icon { background: var(--green); color: white; transform: translateY(-5px) scale(1.12); box-shadow: 0 8px 20px rgba(124,181,24,.3); }
+            :where(.mouse-effects) .t-card:hover .t-icon i { animation: icon-greet .6s ease; }
+            :where(.mouse-effects) .t-card:hover h4 { color: var(--green-dark); }
+            :where(.mouse-effects) .step-card:hover .step-num { animation: step-halo 1.2s ease-out 2; }
+            :where(.mouse-effects) .step-card:hover .step-num::after { opacity: 1; transform: scale(1.04); }
+            :where(.mouse-effects) .step-card:hover .step-num i { transform: rotate(-12deg) scale(1.15); }
+            :where(.mouse-effects) .step-card:hover h4 { color: var(--green-dark); transform: translateY(-3px); }
+            :where(.mouse-effects) .delivery-card:hover i, :where(.mouse-effects) .service-card:hover i { animation: icon-greet .65s ease; }
+            :where(.mouse-effects) .service-card:hover { box-shadow: 0 16px 35px rgba(0,0,0,.22) !important; }
+            :where(.mouse-effects) .service-card-monthly::before { background: radial-gradient(330px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(255,255,255,.24), transparent 72%); }
+            :where(.mouse-effects) .gallery-item.visible:hover { transform: translateY(-9px) scale(1.015); }
+            :where(.mouse-effects) .gallery-item:hover::before, :where(.mouse-effects) .gallery-item:focus-visible::before { opacity: 1; transform: translateY(0) rotate(0); }
+            :where(.mouse-effects) .gallery-item:hover img { transform: scale(1.14) rotate(1deg); filter: saturate(1.08); }
+            :where(.mouse-effects) .pc-row:not(.pc-header):hover { box-shadow: inset 5px 0 var(--green), inset 0 0 0 1px rgba(124,181,24,.3); background-image: radial-gradient(400px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(124,181,24,.2), transparent 75%); }
+            :where(.mouse-effects) .pc-row:hover .pc-title { transform: translateX(5px); color: var(--green-dark); }
+            :where(.mouse-effects) .pc-row:hover .pc-badge { transform: translateY(-2px); }
+            :where(.mouse-effects) .plans-note:hover strong { transform: translateY(-1px); }
+            :where(.mouse-effects) .qperk:hover { transform: translateX(7px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+            :where(.mouse-effects) .qperk:hover .qperk-icon { background: var(--green); color: white; transform: rotate(-8deg) scale(1.08); }
+            :where(.mouse-effects) .qperk:hover .qperk-text strong { color: #d8efab; transform: translateX(2px); }
+            :where(.mouse-effects) .testi-card:hover .testi-stars i { animation: star-jump .55s ease var(--star-delay,0s); }
+            :where(.mouse-effects) .testi-card:hover .testi-av { transform: rotate(-8deg) scale(1.12); }
         }
         .gallery-item:focus-visible { outline: 3px solid var(--green-dark); outline-offset: 5px; }
         @media (prefers-reduced-motion: reduce) {
@@ -2321,14 +2321,14 @@
         .btn-wa .button-ripple { background: rgba(124,181,24,.3); }
         .btn-wa::before { background: radial-gradient(180px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(124,181,24,.23), transparent 75%); }
         .btn-wa::after { background: linear-gradient(90deg, transparent, rgba(124,181,24,.2), transparent); }
-        @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-            .payment-method:hover {
+        @media (prefers-reduced-motion: no-preference) {
+            :where(.mouse-effects) .payment-method:hover {
                 transform: translateY(-6px) scale(1.04);
                 box-shadow: 0 14px 26px rgba(59,47,30,.13), 0 0 0 3px rgba(124,181,24,.14) !important;
             }
-            .payment-method:hover::before { opacity: 1; }
-            .payment-method:hover i { animation: icon-greet .6s ease; transform: scale(1.18); }
-            .btn-wa:hover { box-shadow: 0 16px 32px rgba(0,0,0,.2), 0 0 0 6px rgba(255,255,255,.16); }
+            :where(.mouse-effects) .payment-method:hover::before { opacity: 1; }
+            :where(.mouse-effects) .payment-method:hover i { animation: icon-greet .6s ease; transform: scale(1.18); }
+            :where(.mouse-effects) .btn-wa:hover { box-shadow: 0 16px 32px rgba(0,0,0,.2), 0 0 0 6px rgba(255,255,255,.16); }
         }
         @media (prefers-reduced-motion: reduce) {
             .payment-method, .payment-method i, .btn-wa, .btn-wa i { transform: none !important; }
@@ -3081,13 +3081,28 @@
             });
         });
 
-        // Pointer highlights stay local to each card; no work runs on touch devices.
-        const pointerMotion = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+        // Actual pointer events also support previews that report touch capabilities.
+        const pointerMotion = window.matchMedia('(prefers-reduced-motion: no-preference)');
+        const root = document.documentElement;
+        if (pointerMotion.matches && window.matchMedia('(any-hover: hover) and (any-pointer: fine)').matches) {
+            root.classList.add('mouse-effects');
+        }
+        const updatePointerMode = event => {
+            if (event.pointerType !== 'mouse' && event.pointerType !== 'touch') return;
+            const enabled = event.pointerType === 'mouse' && pointerMotion.matches;
+            if (root.classList.contains('mouse-effects') !== enabled) root.classList.toggle('mouse-effects', enabled);
+        };
+        document.addEventListener('pointerover', updatePointerMode, { passive: true });
+        document.addEventListener('pointermove', updatePointerMode, { passive: true });
+        document.addEventListener('pointerdown', updatePointerMode, { passive: true, capture: true });
+        pointerMotion.addEventListener('change', () => {
+            if (!pointerMotion.matches) root.classList.remove('mouse-effects');
+        });
         const pointerCards = document.querySelectorAll('.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header), .gallery-item, .hero-img-wrap, .delivery-card, .service-card, .plans-note, .payment-method, .btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa');
         pointerCards.forEach(card => {
             let frame = 0;
             card.addEventListener('pointermove', event => {
-                if (!pointerMotion.matches) return;
+                if (!pointerMotion.matches || event.pointerType !== 'mouse') return;
                 cancelAnimationFrame(frame);
                 frame = requestAnimationFrame(() => {
                     const box = card.getBoundingClientRect();
