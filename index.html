@@ -2149,6 +2149,151 @@
             .reveal { opacity: 1 !important; transform: none !important; }
             :is(.hero-img-wrap, .hero-img-main, .gallery-item, .gallery-item img, .t-card, .t-icon, .testi-card, .menu-card, .qperk-icon, .step-num, .pc-price, .wa-float, .feat-item i, .btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-primary i, .btn-ghost i, .btn-nav i, .btn-pedir i) { transform: none !important; }
         }
+        /* Stronger feedback across the service sections */
+        .delivery-card { box-shadow: var(--shadow-sm); }
+        :is(.t-card, .testi-card, .service-card, .delivery-card, .plans-note, .qperk) {
+            position: relative;
+            isolation: isolate;
+        }
+        :is(.service-card, .delivery-card, .plans-note) {
+            transition: transform .4s cubic-bezier(.2,.75,.25,1), box-shadow .4s ease;
+        }
+        :is(.t-card, .testi-card, .service-card, .delivery-card, .plans-note, .qperk)::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: 1px solid transparent;
+            background: radial-gradient(330px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(147,199,52,.19), transparent 72%);
+            opacity: 0;
+            transition: opacity .3s ease, border-color .3s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir)::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(160px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(255,255,255,.28), transparent 75%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s ease;
+            z-index: -1;
+        }
+        .button-ripple {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.55);
+            pointer-events: none;
+            z-index: -1;
+            animation: click-wave .65s ease-out forwards;
+        }
+        .btn-ghost .button-ripple { background: rgba(124,181,24,.25); }
+        .feat-item { position: relative; padding: 10px 0; transition: color .3s ease, transform .3s ease; }
+        .feat-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--green), #d9ef9e);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .35s ease;
+        }
+        .step-num::after {
+            content: '';
+            position: absolute;
+            inset: -9px;
+            border: 1px solid var(--green-light);
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(.9);
+            transition: transform .4s ease, opacity .4s ease;
+        }
+        .step-card h4, .t-card h4, .pc-title, .pc-badge { transition: color .3s ease, transform .3s ease; }
+        .service-card i, .delivery-card i, .step-num i, .testi-av, .testi-stars i, .qperk-text strong, .plans-note strong { transition: transform .35s ease, color .35s ease; }
+        .service-card i, .delivery-card i, .step-num i, .plans-note strong { display: inline-block; }
+        .testi-stars i:nth-child(2) { --star-delay: .05s; }
+        .testi-stars i:nth-child(3) { --star-delay: .1s; }
+        .testi-stars i:nth-child(4) { --star-delay: .15s; }
+        .testi-stars i:nth-child(5) { --star-delay: .2s; }
+        .gallery-item::before {
+            content: '\f065';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,.95);
+            color: var(--green-dark);
+            box-shadow: 0 6px 18px rgba(0,0,0,.15);
+            opacity: 0;
+            transform: translateY(10px) rotate(-30deg);
+            transition: opacity .3s ease, transform .4s ease;
+            z-index: 2;
+            pointer-events: none;
+        }
+        @keyframes click-wave { to { transform: translate(-50%,-50%) scale(75); opacity: 0; } }
+        @keyframes star-jump { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-6px) rotate(12deg); } }
+        @keyframes icon-greet { 0%,100% { transform: rotate(0); } 30% { transform: rotate(-14deg); } 65% { transform: rotate(10deg); } }
+        @keyframes step-halo { 0% { box-shadow: 0 0 0 0 rgba(124,181,24,.25); } 100% { box-shadow: 0 0 0 18px rgba(124,181,24,0); } }
+        @keyframes surface-arrive { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .target-grid.visible .t-card { animation: surface-arrive .6s cubic-bezier(.2,.7,.2,1) backwards; }
+        .target-grid.visible .t-card:nth-child(2) { animation-delay: .08s; }
+        .target-grid.visible .t-card:nth-child(3) { animation-delay: .16s; }
+        .target-grid.visible .t-card:nth-child(4) { animation-delay: .24s; }
+        @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir):hover {
+                transform: translateY(-4px) scale(1.025);
+                box-shadow: 0 12px 30px rgba(102,148,22,.32), 0 0 0 5px rgba(124,181,24,.09);
+            }
+            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir):hover::before { opacity: 1; }
+            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir):hover i { animation: icon-greet .55s ease; }
+            .feat-item:hover { color: white; transform: translateY(-3px); }
+            .feat-item:hover::after { transform: scaleX(1); }
+            .feat-item:hover i { transform: scale(1.25) rotate(-12deg); filter: drop-shadow(0 0 7px rgba(175,222,80,.5)); }
+            :is(.t-card, .testi-card, .service-card, .delivery-card, .plans-note, .qperk):hover::before { opacity: 1; border-color: rgba(124,181,24,.5); }
+            .t-card:hover, .testi-card.visible:hover, .service-card:hover, .delivery-card:hover, .plans-note:hover {
+                transform: perspective(1000px) translateY(-8px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
+                box-shadow: 0 22px 44px rgba(59,47,30,.16);
+            }
+            .t-card:hover .t-icon { background: var(--green); color: white; transform: translateY(-5px) scale(1.12); box-shadow: 0 8px 20px rgba(124,181,24,.3); }
+            .t-card:hover .t-icon i { animation: icon-greet .6s ease; }
+            .t-card:hover h4 { color: var(--green-dark); }
+            .step-card:hover .step-num { animation: step-halo 1.2s ease-out 2; }
+            .step-card:hover .step-num::after { opacity: 1; transform: scale(1.04); }
+            .step-card:hover .step-num i { transform: rotate(-12deg) scale(1.15); }
+            .step-card:hover h4 { color: var(--green-dark); transform: translateY(-3px); }
+            .delivery-card:hover i, .service-card:hover i { animation: icon-greet .65s ease; }
+            .service-card:hover { box-shadow: 0 16px 35px rgba(0,0,0,.22) !important; }
+            .service-card-monthly::before { background: radial-gradient(330px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(255,255,255,.24), transparent 72%); }
+            .gallery-item.visible:hover { transform: translateY(-9px) scale(1.015); }
+            .gallery-item:hover::before, .gallery-item:focus-visible::before { opacity: 1; transform: translateY(0) rotate(0); }
+            .gallery-item:hover img { transform: scale(1.14) rotate(1deg); filter: saturate(1.08); }
+            .pc-row:not(.pc-header):hover { box-shadow: inset 5px 0 var(--green), inset 0 0 0 1px rgba(124,181,24,.3); background-image: radial-gradient(400px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(124,181,24,.2), transparent 75%); }
+            .pc-row:hover .pc-title { transform: translateX(5px); color: var(--green-dark); }
+            .pc-row:hover .pc-badge { transform: translateY(-2px); }
+            .plans-note:hover strong { transform: translateY(-1px); }
+            .qperk:hover { transform: translateX(7px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+            .qperk:hover .qperk-icon { background: var(--green); color: white; transform: rotate(-8deg) scale(1.08); }
+            .qperk:hover .qperk-text strong { color: #d8efab; transform: translateX(2px); }
+            .testi-card:hover .testi-stars i { animation: star-jump .55s ease var(--star-delay,0s); }
+            .testi-card:hover .testi-av { transform: rotate(-8deg) scale(1.12); }
+        }
+        .gallery-item:focus-visible { outline: 3px solid var(--green-dark); outline-offset: 5px; }
+        @media (prefers-reduced-motion: reduce) {
+            :is(.t-card, .testi-card, .service-card, .delivery-card, .plans-note, .qperk, .pc-title, .pc-badge, .testi-av, .step-num i, .service-card i, .delivery-card i, .testi-stars i) { transform: none !important; }
+            .button-ripple { display: none; }
+        }
     </style>
 </head>
 
@@ -2328,8 +2473,8 @@
                 <p style="font-size: 1.05rem; margin-bottom: 1.5rem;">Las viandas se entregan exclusivamente en Río
                     Grande.</p>
 
-                <div
-                    style="background: var(--white); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--cream-dark); box-shadow: var(--shadow-sm);">
+                <div class="delivery-card"
+                    style="background: var(--white); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--cream-dark);">
                     <p><strong><i class="fa-solid fa-map-location-dot" style="color: var(--green);"></i> Zonas con envío
                             incluido:</strong></p>
                     <p style="margin-bottom: 1.5rem;">• Chacra 2<br>• Barrio Mutual<br>• Zona Centro y alrededores</p>
@@ -2489,18 +2634,18 @@
 
                 <!-- Menos lectura, más escaneo -->
                 <div style="display: flex; flex-direction: column; gap: 1rem; text-align: left;">
-                    <div
+                    <div class="service-card service-card-monthly"
                         style="background: var(--green); color: var(--white); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
                         <strong style="font-size: 1.05rem;"><i class="fa-solid fa-star"></i> Plan mensual
                             (prioridad de cupo):</strong><br>
                         Tu mes resuelto. Te olvidás de cocinar por 4 semanas.
                     </div>
-                    <div style="background: var(--cream); padding: 1.5rem; border-radius: var(--radius);">
+                    <div class="service-card" style="background: var(--cream); padding: 1.5rem; border-radius: var(--radius);">
                         <strong style="color: var(--earth);"><i class="fa-solid fa-calendar-week"></i> Plan
                             semanal:</strong><br>
                         Tu semana resuelta de lunes a viernes. Sujeto a disponibilidad.
                     </div>
-                    <div style="background: var(--white); padding: 1.5rem; border-radius: var(--radius);">
+                    <div class="service-card" style="background: var(--white); padding: 1.5rem; border-radius: var(--radius);">
                         <strong style="color: var(--text);"><i class="fa-solid fa-bag-shopping"></i> Pedidos
                             ocasionales:</strong><br>
                         Sujeto a stock sobrante de la producción del día.
@@ -2847,7 +2992,7 @@
 
         // Pointer highlights stay local to each card; no work runs on touch devices.
         const pointerMotion = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
-        const pointerCards = document.querySelectorAll('.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header), .gallery-item, .hero-img-wrap');
+        const pointerCards = document.querySelectorAll('.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header), .gallery-item, .hero-img-wrap, .delivery-card, .service-card, .plans-note, .btn-primary, .btn-ghost, .btn-nav, .btn-pedir');
         pointerCards.forEach(card => {
             let frame = 0;
             card.addEventListener('pointermove', event => {
@@ -2859,9 +3004,10 @@
                     const y = event.clientY - box.top;
                     card.style.setProperty('--pointer-x', `${x}px`);
                     card.style.setProperty('--pointer-y', `${y}px`);
-                    if (card.classList.contains('hero-img-wrap')) {
-                        card.style.setProperty('--tilt-x', `${(0.5 - y / box.height) * 5}deg`);
-                        card.style.setProperty('--tilt-y', `${(x / box.width - 0.5) * 5}deg`);
+                    if (card.matches('.hero-img-wrap, .t-card, .testi-card, .delivery-card, .service-card, .plans-note')) {
+                        const tilt = card.classList.contains('hero-img-wrap') ? 5 : 3;
+                        card.style.setProperty('--tilt-x', `${(0.5 - y / box.height) * tilt}deg`);
+                        card.style.setProperty('--tilt-y', `${(x / box.width - 0.5) * tilt}deg`);
                     }
                 });
             }, { passive: true });
@@ -2869,6 +3015,21 @@
                 cancelAnimationFrame(frame);
                 ['--pointer-x', '--pointer-y', '--tilt-x', '--tilt-y'].forEach(property => card.style.removeProperty(property));
             });
+        });
+        document.querySelectorAll('.btn-primary, .btn-ghost, .btn-nav, .btn-pedir').forEach(button => {
+            button.addEventListener('pointerdown', event => {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                button.querySelectorAll('.button-ripple').forEach(ripple => ripple.remove());
+                const box = button.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                ripple.className = 'button-ripple';
+                ripple.setAttribute('aria-hidden', 'true');
+                ripple.style.left = `${event.clientX - box.left}px`;
+                ripple.style.top = `${event.clientY - box.top}px`;
+                button.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+                setTimeout(() => ripple.remove(), 800);
+            }, { passive: true });
         });
         let progressFrame = 0;
         const updateProgress = () => {
@@ -2900,7 +3061,17 @@
         const lightboxClose = document.getElementById('lightbox-close');
 
         document.querySelectorAll('.gallery-item img').forEach(img => {
-            img.closest('.gallery-item').addEventListener('click', () => {
+            const galleryCard = img.closest('.gallery-item');
+            galleryCard.tabIndex = 0;
+            galleryCard.setAttribute('role', 'button');
+            galleryCard.setAttribute('aria-label', `Ampliar: ${img.alt}`);
+            galleryCard.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    galleryCard.click();
+                }
+            });
+            galleryCard.addEventListener('click', () => {
                 lightboxImg.src = img.src;
                 lightbox.classList.add('active');
             });
