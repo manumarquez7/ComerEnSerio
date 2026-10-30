@@ -1480,17 +1480,17 @@
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--cream-dark);
             overflow: hidden;
-            max-width: 850px;
+            max-width: 1000px;
             margin: 0 auto 3rem;
         }
 
         .pc-row {
             display: grid;
-            grid-template-columns: 1.2fr 1.2fr 1fr auto;
+            grid-template-columns: minmax(0, 1fr) minmax(0, .85fr) minmax(0, 1.15fr) minmax(0, 1.25fr);
             align-items: center;
-            padding: 1.2rem 1.8rem;
+            padding: 2rem;
             border-bottom: 1px solid var(--cream-dark);
-            gap: 1rem;
+            gap: 1.5rem;
             transition: var(--trans);
         }
 
@@ -1505,10 +1505,12 @@
         .pc-header {
             background: var(--earth);
             color: var(--white);
-            font-family: 'Fraunces', serif;
+            font-family: 'DM Sans', sans-serif;
             font-weight: 700;
-            font-size: 1.1rem;
-            padding: 1.5rem 1.8rem;
+            font-size: .75rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 1.2rem 2rem;
         }
 
         .pc-header:hover {
@@ -1529,18 +1531,83 @@
         .pc-price {
             font-weight: 800;
             color: var(--green-dark);
+            font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+            letter-spacing: -.04em;
+            font-variant-numeric: tabular-nums;
+            line-height: 1.2;
+        }
+
+        .pc-caption {
+            display: block;
+            color: var(--text-soft);
+            font-size: .78rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-top: .3rem;
+            letter-spacing: 0;
+        }
+
+        .pc-unit-price {
+            margin-top: .65rem;
+            color: var(--green-dark);
+            font-size: .8rem;
+            font-weight: 600;
+        }
+
+        .pc-desc strong {
+            display: block;
+            color: var(--earth);
             font-size: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .pc-badge {
+            display: inline-block;
+            margin-top: .65rem;
+            padding: .35rem .6rem;
+            border-radius: 6px;
+            background: var(--green-dark);
+            color: var(--white);
+            font-size: .65rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .pc-action .btn-pedir {
+            display: flex;
+            width: 100%;
+            min-height: 48px;
+            padding: .85rem 1rem;
+            justify-content: center;
+            white-space: nowrap;
+            font-size: .8rem;
+        }
+
+        .pc-action .btn-pedir:focus-visible {
+            outline: 3px solid var(--earth);
+            outline-offset: 4px;
         }
 
         .pc-row.highlight {
             background: var(--green-soft);
-            border: 2px solid var(--green-light);
+            box-shadow: inset 4px 0 var(--green);
+        }
+
+        .pc-row.highlight:hover {
+            background: var(--green-soft);
         }
 
         .pc-btn-high {
             background: var(--green);
             color: var(--white);
             border-color: var(--green);
+        }
+
+        @media (min-width: 601px) and (max-width: 960px) {
+            .pc-header { display: none; }
+            .pc-row { grid-template-columns: 1fr 1fr; }
+            .pc-action { align-self: end; }
         }
 
         /* CHEF CSS */
@@ -1733,6 +1800,10 @@
                 margin-top: 1rem;
                 display: flex;
                 justify-content: center;
+            }
+
+            .pc-action .btn-pedir {
+                max-width: 300px;
             }
 
             .pc-title {
@@ -2229,14 +2300,16 @@
                 <div class="pc-row pc-header">
                     <div class="pc-col">Plan</div>
                     <div class="pc-col">Almuerzos</div>
-                    <div class="pc-col">Precio</div>
+                    <div class="pc-col">Precio mensual</div>
                     <div class="pc-col"></div>
                 </div>
                 <div class="pc-row">
                     <div class="pc-col pc-title">Ejecutivo</div>
-                    <div class="pc-col pc-desc">20</div>
+                    <div class="pc-col pc-desc"><strong>20</strong><span class="pc-caption">almuerzos al mes</span></div>
                     <div class="pc-col">
-                        <div class="pc-price" style="margin-bottom: 0.2rem;">$240.000</div>
+                        <div class="pc-price">$240.000</div>
+                        <span class="pc-caption">por persona / mes</span>
+                        <div class="pc-unit-price">$12.000 por almuerzo</div>
                     </div>
                     <div class="pc-col pc-action">
                         <a href="https://wa.me/5492964472865?text=Hola.%20Quiero%20contratar%20el%20Plan%20Ejecutivo%20(20%20almuerzos)."
@@ -2246,13 +2319,12 @@
                     </div>
                 </div>
                 <div class="pc-row highlight">
-                    <div class="pc-col pc-title">Dúo</div>
-                    <div class="pc-col pc-desc">20 cada uno</div>
+                    <div class="pc-col pc-title">Dúo<br><span class="pc-badge">Mejor precio</span></div>
+                    <div class="pc-col pc-desc"><strong>20 cada uno</strong><span class="pc-caption">40 almuerzos en total</span></div>
                     <div class="pc-col">
-                        <div class="pc-price" style="margin-bottom: 0.2rem;">$220.000</div>
-                        <div style="font-size: 0.75rem; color: var(--green-dark); font-weight: 600; line-height: 1.3;">~
-                            $11.000 por almuerzo<br><span style="font-weight:400; color: var(--text-soft);">El precio
-                                más bajo del servicio</span></div>
+                        <div class="pc-price">$220.000</div>
+                        <span class="pc-caption">por persona / mes</span>
+                        <div class="pc-unit-price">$11.000 por almuerzo</div>
                     </div>
                     <div class="pc-col pc-action">
                         <a href="https://wa.me/5492964472865?text=Hola.%20Queremos%20contratar%20el%20Plan%20D%C3%BAo%20(40%20almuerzos)."
