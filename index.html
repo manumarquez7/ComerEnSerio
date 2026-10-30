@@ -2075,13 +2075,13 @@
             transition: transform .25s ease;
         }
         .nav-links a:not(.btn-nav):is(:hover, :focus-visible)::after { transform: scaleX(1); }
-        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir) {
+        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa) {
             position: relative;
             overflow: hidden;
             isolation: isolate;
             transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
         }
-        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir)::after {
+        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa)::after {
             content: '';
             position: absolute;
             inset: -70% auto -70% -70%;
@@ -2090,8 +2090,8 @@
             transform: skewX(-22deg);
             pointer-events: none;
         }
-        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir) i { transition: transform .3s ease; }
-        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir):active { transform: translateY(1px) scale(.97); }
+        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa) i { transition: transform .3s ease; }
+        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):active { transform: translateY(1px) scale(.97); }
         a:focus-visible, button:focus-visible { outline: 3px solid var(--green-dark); outline-offset: 5px; }
         .hero-visual::before { animation: hero-breathe 9s ease-in-out infinite; }
         .hero-text > * { animation: hero-arrive .7s cubic-bezier(.2,.7,.2,1) both; }
@@ -2103,12 +2103,12 @@
         @keyframes hero-breathe { 0%,100% { transform: rotate(-8deg) scale(1); } 50% { transform: rotate(-3deg) scale(1.035); } }
         @keyframes button-shine { to { left: 145%; } }
         @media (hover: hover) and (pointer: fine) {
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir):hover::after { animation: button-shine .65s ease; }
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir):hover {
+            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover::after { animation: button-shine .65s ease; }
+            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover {
                 transform: translateY(-3px);
                 box-shadow: 0 10px 26px rgba(89,124,24,.25);
             }
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir):hover i { transform: rotate(-9deg) scale(1.18); }
+            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover i { transform: rotate(-9deg) scale(1.18); }
             :is(.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header)) {
                 background-image: radial-gradient(280px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgba(124,181,24,.13), transparent 75%);
                 background-repeat: no-repeat;
@@ -2147,7 +2147,7 @@
             html { scroll-behavior: auto !important; }
             *, *::before, *::after { animation: none !important; transition: none !important; }
             .reveal { opacity: 1 !important; transform: none !important; }
-            :is(.hero-img-wrap, .hero-img-main, .gallery-item, .gallery-item img, .t-card, .t-icon, .testi-card, .menu-card, .qperk-icon, .step-num, .pc-price, .wa-float, .feat-item i, .btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-primary i, .btn-ghost i, .btn-nav i, .btn-pedir i) { transform: none !important; }
+            :is(.hero-img-wrap, .hero-img-main, .gallery-item, .gallery-item img, .t-card, .t-icon, .testi-card, .menu-card, .qperk-icon, .step-num, .pc-price, .wa-float, .feat-item i, .btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa, .btn-primary i, .btn-ghost i, .btn-nav i, .btn-pedir i) { transform: none !important; }
         }
         /* Stronger feedback across the service sections */
         .delivery-card { box-shadow: var(--shadow-sm); }
@@ -2170,7 +2170,7 @@
             pointer-events: none;
             z-index: -1;
         }
-        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir)::before {
+        :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa)::before {
             content: '';
             position: absolute;
             inset: 0;
@@ -2252,12 +2252,12 @@
         .target-grid.visible .t-card:nth-child(3) { animation-delay: .16s; }
         .target-grid.visible .t-card:nth-child(4) { animation-delay: .24s; }
         @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir):hover {
+            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover {
                 transform: translateY(-4px) scale(1.025);
                 box-shadow: 0 12px 30px rgba(102,148,22,.32), 0 0 0 5px rgba(124,181,24,.09);
             }
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir):hover::before { opacity: 1; }
-            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir):hover i { animation: icon-greet .55s ease; }
+            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover::before { opacity: 1; }
+            :is(.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa):hover i { animation: icon-greet .55s ease; }
             .feat-item:hover { color: white; transform: translateY(-3px); }
             .feat-item:hover::after { transform: scaleX(1); }
             .feat-item:hover i { transform: scale(1.25) rotate(-12deg); filter: drop-shadow(0 0 7px rgba(175,222,80,.5)); }
@@ -2293,6 +2293,39 @@
         @media (prefers-reduced-motion: reduce) {
             :is(.t-card, .testi-card, .service-card, .delivery-card, .plans-note, .qperk, .pc-title, .pc-badge, .testi-av, .step-num i, .service-card i, .delivery-card i, .testi-stars i) { transform: none !important; }
             .button-ripple { display: none; }
+        }
+        /* Payment badges and final call to action */
+        .payment-method {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+        .payment-method::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(160px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(124,181,24,.2), transparent 75%);
+            opacity: 0;
+            transition: opacity .3s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .payment-method i, .btn-wa i { transition: transform .3s ease; }
+        .btn-wa .button-ripple { background: rgba(124,181,24,.3); }
+        .btn-wa::before { background: radial-gradient(180px circle at var(--pointer-x,50%) var(--pointer-y,50%), rgba(124,181,24,.23), transparent 75%); }
+        .btn-wa::after { background: linear-gradient(90deg, transparent, rgba(124,181,24,.2), transparent); }
+        @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+            .payment-method:hover {
+                transform: translateY(-6px) scale(1.04);
+                box-shadow: 0 14px 26px rgba(59,47,30,.13), 0 0 0 3px rgba(124,181,24,.14) !important;
+            }
+            .payment-method:hover::before { opacity: 1; }
+            .payment-method:hover i { animation: icon-greet .6s ease; transform: scale(1.18); }
+            .btn-wa:hover { box-shadow: 0 16px 32px rgba(0,0,0,.2), 0 0 0 6px rgba(255,255,255,.16); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .payment-method, .payment-method i, .btn-wa, .btn-wa i { transform: none !important; }
         }
     </style>
 </head>
@@ -2889,16 +2922,16 @@
             </div>
 
             <div class="reveal" style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-                <div
+                <div class="payment-method"
                     style="background: var(--white); padding: 1rem 2rem; border-radius: 50px; font-weight: 600; color: var(--earth); box-shadow: var(--shadow-sm); border: 1px solid var(--cream-dark); display: flex; align-items: center; gap: 0.8rem;">
                     <i class="fa-solid fa-money-bill-wave" style="color: var(--green); font-size: 1.2rem;"></i> Efectivo
                 </div>
-                <div
+                <div class="payment-method"
                     style="background: var(--white); padding: 1rem 2rem; border-radius: 50px; font-weight: 600; color: var(--earth); box-shadow: var(--shadow-sm); border: 1px solid var(--cream-dark); display: flex; align-items: center; gap: 0.8rem;">
                     <i class="fa-solid fa-building-columns" style="color: var(--green); font-size: 1.2rem;"></i>
                     Transferencia
                 </div>
-                <div
+                <div class="payment-method"
                     style="background: var(--white); padding: 1rem 2rem; border-radius: 50px; font-weight: 600; color: var(--earth); box-shadow: var(--shadow-sm); border: 1px solid var(--cream-dark); display: flex; align-items: center; gap: 0.8rem;">
                     <i class="fa-solid fa-hand-holding-dollar" style="color: var(--green); font-size: 1.2rem;"></i>
                     Mercado Pago
@@ -2992,7 +3025,7 @@
 
         // Pointer highlights stay local to each card; no work runs on touch devices.
         const pointerMotion = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
-        const pointerCards = document.querySelectorAll('.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header), .gallery-item, .hero-img-wrap, .delivery-card, .service-card, .plans-note, .btn-primary, .btn-ghost, .btn-nav, .btn-pedir');
+        const pointerCards = document.querySelectorAll('.t-card, .menu-card, .testi-card, .qperk, .pc-row:not(.pc-header), .gallery-item, .hero-img-wrap, .delivery-card, .service-card, .plans-note, .payment-method, .btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa');
         pointerCards.forEach(card => {
             let frame = 0;
             card.addEventListener('pointermove', event => {
@@ -3016,7 +3049,7 @@
                 ['--pointer-x', '--pointer-y', '--tilt-x', '--tilt-y'].forEach(property => card.style.removeProperty(property));
             });
         });
-        document.querySelectorAll('.btn-primary, .btn-ghost, .btn-nav, .btn-pedir').forEach(button => {
+        document.querySelectorAll('.btn-primary, .btn-ghost, .btn-nav, .btn-pedir, .btn-wa').forEach(button => {
             button.addEventListener('pointerdown', event => {
                 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
                 button.querySelectorAll('.button-ripple').forEach(ripple => ripple.remove());
