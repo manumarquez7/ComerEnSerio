@@ -14,10 +14,19 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://comerenserio.com.ar/">
     <!-- URL absoluta obligatoria para que funcione la vista previa en WhatsApp -->
-    <meta property="og:image" content="https://comerenserio.com.ar/hero-plato.webp">
+    <meta property="og:image" content="https://comerenserio.com.ar/hero-plato-v2.webp">
+    <meta property="og:image:width" content="1254">
+    <meta property="og:image:height" content="1254">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:alt" content="Pollo grillado con vegetales asados de Comer en Serio">
+    <meta property="og:site_name" content="Comer en Serio">
     <meta property="og:locale" content="es_AR">
-    <meta name="robots" content="index, follow">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://comerenserio.com.ar/hero-plato-v2.webp">
+    <link rel="canonical" href="https://comerenserio.com.ar/">
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="96x96">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -30,11 +39,44 @@
     <script type="application/ld+json">
     {
      "@context": "https://schema.org",
-     "@type": "FoodDelivery",
-     "name": "Comer en Serio",
-     "areaServed": "Río Grande, Tierra del Fuego",
-     "telephone": "+5492964472865",
-     "servesCuisine": "Comida real"
+     "@graph": [
+      {
+       "@type": "WebSite",
+       "@id": "https://comerenserio.com.ar/#website",
+       "name": "Comer en Serio",
+       "alternateName": "COMER EN SERIO",
+       "url": "https://comerenserio.com.ar/"
+      },
+      {
+       "@type": "WebPage",
+       "@id": "https://comerenserio.com.ar/#webpage",
+       "url": "https://comerenserio.com.ar/",
+       "name": "Viandas Saludables en Río Grande | Comer en Serio",
+       "inLanguage": "es-AR",
+       "isPartOf": {"@id": "https://comerenserio.com.ar/#website"},
+       "primaryImageOfPage": {"@id": "https://comerenserio.com.ar/#primaryimage"},
+       "mainEntity": {"@id": "https://comerenserio.com.ar/#business"}
+      },
+      {
+       "@type": "ImageObject",
+       "@id": "https://comerenserio.com.ar/#primaryimage",
+       "contentUrl": "https://comerenserio.com.ar/hero-plato-v2.webp",
+       "width": 1254,
+       "height": 1254,
+       "caption": "Pollo grillado con vegetales asados de Comer en Serio"
+      },
+      {
+       "@type": "FoodEstablishment",
+       "@id": "https://comerenserio.com.ar/#business",
+       "name": "Comer en Serio",
+       "url": "https://comerenserio.com.ar/",
+       "areaServed": "Río Grande, Tierra del Fuego",
+       "telephone": "+5492964472865",
+       "servesCuisine": "Comida real",
+       "image": {"@id": "https://comerenserio.com.ar/#primaryimage"},
+       "logo": "https://comerenserio.com.ar/logo.png"
+      }
+     ]
     }
     </script>
 
