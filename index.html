@@ -2594,44 +2594,6 @@
             .touch-active { scale: 1; }
             .gallery-grid, .features-strip-inner { scroll-behavior: auto; }
         }
-        /* Denser rhythm and a consistent visual menu. */
-        .sec-title em, .sec-tag { color: var(--green-dark); }
-        .how { padding-top: 64px; padding-bottom: 64px; }
-        #zona { padding-bottom: 48px; }
-        .menu-section, .gallery-section { padding-top: 56px; padding-bottom: 56px; }
-        .how-head, .menu-head, .gallery-head { margin-bottom: 2rem; }
-        .menu-inner { max-width: 1120px; }
-        .menu-cards { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 20px; }
-        .menu-card { grid-column: span 2; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 0; border-color: #e5ddcd; box-shadow: 0 6px 20px rgba(59,47,30,.08); }
-        .menu-card:nth-child(n+4) { grid-column: span 3; }
-        .menu-card-photo { position: relative; margin: 0; height: 190px; overflow: hidden; background: var(--cream-dark); }
-        .menu-card-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-        .menu-card:last-child .menu-card-photo img { object-position: 50% 75%; }
-        .menu-card-photo figcaption { position: absolute; right: 10px; bottom: 10px; background: rgba(255,255,255,.92); color: var(--text-soft); border-radius: 5px; padding: 3px 7px; font-size: 10px; }
-        .menu-card-body { display: flex; flex-direction: column; padding: 22px; }
-        .menu-card-body h4 { font-size: 1.2rem; line-height: 1.35; margin-bottom: 10px; }
-        .menu-card-body p { color: #564b3d; font-size: .9rem; line-height: 1.65; }
-        .menu-card-tags { margin-top: auto; padding-top: 16px; }
-        .menu-card .mtag { font-size: 11px; letter-spacing: .02em; background: #eff4e6; color: #42600e; border: 1px solid #d9e4c8; }
-        :where(.mouse-effects) .menu-card:hover .menu-card-photo img { transform: scale(1.045); }
-        @media (max-width: 960px) {
-            .menu-cards { grid-template-columns: repeat(2,minmax(0,1fr)); }
-            .menu-card, .menu-card:nth-child(n+4) { grid-column: auto; }
-            .menu-card:last-child { grid-column: 1 / -1; }
-        }
-        @media (max-width: 600px) {
-            .how { padding-top: 44px; padding-bottom: 44px; }
-            #zona { padding-bottom: 36px; }
-            .menu-section, .gallery-section { padding-top: 40px; padding-bottom: 40px; }
-            .menu-cards { grid-template-columns: minmax(0,1fr); gap: 18px; }
-            .menu-card, .menu-card:last-child { grid-column: auto; }
-            .menu-card-photo { height: 190px; }
-            .menu-card-body { padding: 20px; }
-            .menu-card-body h4 { font-size: 1.18rem; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .menu-card-photo img { transform: none !important; }
-        }
     </style>
 </head>
 
@@ -2766,7 +2728,7 @@
     </section>
 
     <!-- ══ COMO FUNCIONA ══════════════════════════════════ -->
-    <section class="how" id="como-funciona" style="padding-bottom: 36px;">
+    <section class="how" id="como-funciona" style="padding-bottom: 50px;">
         <div class="how-inner">
             <div class="how-head reveal">
                 <div class="sec-tag">¿Cómo funciona?</div>
@@ -2800,7 +2762,7 @@
     </section>
 
     <!-- 🟡 ZONA DE ENTREGA ══════════════════════════════════ -->
-    <section class="how" id="zona" style="padding-top: 24px; background: var(--cream);">
+    <section class="how" id="zona" style="padding-top: 40px; background: var(--cream);">
         <div class="how-inner">
             <div class="how-head reveal" style="margin-bottom: 2rem;">
                 <div class="sec-tag">Zona de entrega</div>
@@ -2831,7 +2793,7 @@
     <!-- ══ MENÚ SEMANAL ═══════════════════════════════════ -->
     <section class="menu-section" id="menu">
         <div class="menu-inner">
-            <div class="menu-head">
+            <div class="menu-head reveal">
                 <div class="sec-tag">Platos de ejemplo</div>
                 <h2 class="sec-title">
                     Así resolvés tus almuerzos <em>de lunes a viernes</em>
@@ -2847,10 +2809,6 @@
             <div class="menu-cards">
                 <!-- Lunes -->
                 <div class="menu-card reveal">
-                    <figure class="menu-card-photo">
-                        <img src="assets/optimized/plato-gourmet-verde.webp" alt="Pescado con crema de vegetales verdes — foto ilustrativa" loading="lazy" decoding="async" width="720" height="480">
-                        <figcaption>Foto ilustrativa</figcaption>
-                    </figure>
                     <div class="menu-card-body">
                         <h4><span style="color: var(--green-dark);">Lunes</span> · Robalo al horno con costra de
                             semillas</h4>
@@ -2865,10 +2823,6 @@
 
                 <!-- Martes -->
                 <div class="menu-card reveal">
-                    <figure class="menu-card-photo">
-                        <img src="assets/optimized/plato-pollo-pure.webp" alt="Pollo con puré de calabaza — foto ilustrativa" loading="lazy" decoding="async" width="720" height="480">
-                        <figcaption>Foto ilustrativa</figcaption>
-                    </figure>
                     <div class="menu-card-body">
                         <h4><span style="color: var(--green-dark);">Martes</span> · Pollo grillado marinado</h4>
                         <p>Pollo jugoso marinado y grillado, acompañado de calabaza y zanahoria asadas con un toque
@@ -2882,10 +2836,6 @@
 
                 <!-- Miércoles -->
                 <div class="menu-card reveal">
-                    <figure class="menu-card-photo">
-                        <img src="assets/optimized/plato-mijo-salteado.webp" alt="Carne con mijo y vegetales — foto ilustrativa" loading="lazy" decoding="async" width="720" height="480">
-                        <figcaption>Foto ilustrativa</figcaption>
-                    </figure>
                     <div class="menu-card-body">
                         <h4><span style="color: var(--green-dark);">Miércoles</span> · Bondiola braseada</h4>
                         <p>Bondiola tierna cocida lentamente con romero y tomillo, acompañada de papas cuña doradas al
@@ -2899,10 +2849,6 @@
 
                 <!-- Jueves -->
                 <div class="menu-card reveal">
-                    <figure class="menu-card-photo">
-                        <img src="assets/optimized/plato-vegetales-arroz.webp" alt="Vegetales con arroz — foto ilustrativa" loading="lazy" decoding="async" width="720" height="480">
-                        <figcaption>Foto ilustrativa</figcaption>
-                    </figure>
                     <div class="menu-card-body">
                         <h4><span style="color: var(--green-dark);">Jueves</span> · Salteado de vegetales estilo wok
                         </h4>
@@ -2916,10 +2862,6 @@
 
                 <!-- Viernes -->
                 <div class="menu-card reveal">
-                    <figure class="menu-card-photo">
-                        <img src="assets/optimized/plato-vegetales-arroz.webp" alt="Preparación de vegetales y arroz — foto ilustrativa" loading="lazy" decoding="async" width="720" height="480">
-                        <figcaption>Foto ilustrativa</figcaption>
-                    </figure>
                     <div class="menu-card-body">
                         <h4><span style="color: var(--green-dark);">Viernes</span> · Quinoa con legumbres y vegetales
                         </h4>
