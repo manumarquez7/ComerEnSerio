@@ -2594,6 +2594,43 @@
             .touch-active { scale: 1; }
             .gallery-grid, .features-strip-inner { scroll-behavior: auto; }
         }
+        /* Consistent spacing and clearer hierarchy, with unchanged content. */
+        .menu-section, .plans-section, .quality, .chef-section, .testi-section { padding-top: 80px; padding-bottom: 80px; }
+        .how { padding-top: 72px; padding-bottom: 72px; }
+        .how-head { margin-bottom: 2.5rem; }
+        .menu-head, .gallery-head { margin-bottom: 2.25rem; }
+        .sec-title { letter-spacing: -.025em; text-wrap: balance; }
+        .sec-title em { color: var(--green-dark); }
+        .menu-head.reveal { opacity: 1; transform: none; }
+        .menu-card { grid-template-columns: minmax(0,1fr); padding: 24px 28px; border-color: #e2dacb; box-shadow: 0 3px 14px rgba(59,47,30,.055); }
+        .menu-card-body { display: grid; grid-template-columns: minmax(0,1fr) auto; column-gap: 24px; }
+        .menu-card-body h4 { grid-column: 1; font-size: 1.2rem; line-height: 1.45; margin-bottom: 10px; }
+        .menu-card-body h4 > span { display: inline-block; background: var(--green-soft); border-radius: 7px; padding: 3px 9px; font-family: 'DM Sans',sans-serif; font-size: .8rem; vertical-align: middle; margin-right: 2px; }
+        .menu-card-body p { grid-column: 1; font-size: .93rem; line-height: 1.7; color: #584e40; max-width: 70ch; }
+        .menu-card-tags { grid-column: 2; grid-row: 1 / span 2; align-self: center; justify-content: flex-end; margin-top: 0; max-width: 160px; }
+        .mtag { font-size: .72rem; font-weight: 600; padding: 5px 10px; border: 1px solid #dce7cc; }
+        .t-card p, .step-card p { font-size: .93rem; line-height: 1.7; }
+        .t-card h4, .step-card h4 { line-height: 1.4; }
+        .testi-card blockquote { line-height: 1.8; }
+        .plans-note { max-width: 680px; margin-left: auto; margin-right: auto; }
+        .hero-section .hero-actions .btn-ghost { border-color: #bca98a; background: rgba(255,255,255,.6); }
+        .btn-primary, .btn-nav, .pc-btn-high { background: #568407; }
+        .nav-links a.btn-nav, .nav-links a.btn-nav:hover { color: var(--white); }
+        .btn-primary:hover, .btn-nav:hover, .pc-btn-high:hover { background: #426800; }
+        @media (max-width: 960px) {
+            .menu-card-body { column-gap: 16px; }
+            .menu-card-tags { max-width: 125px; }
+        }
+        @media (max-width: 600px) {
+            .menu-section, .plans-section, .quality, .chef-section, .testi-section { padding-top: 52px; padding-bottom: 52px; }
+            .how { padding-top: 48px; padding-bottom: 48px; }
+            .menu-head, .gallery-head, .how-head { margin-bottom: 1.75rem; }
+            .menu-card { padding: 21px; }
+            .menu-card-body { grid-template-columns: minmax(0,1fr); }
+            .menu-card-body h4 { font-size: 1.12rem; }
+            .menu-card-body p { font-size: .92rem; }
+            .menu-card-tags { grid-column: 1; grid-row: auto; justify-content: flex-start; max-width: none; margin-top: 14px; }
+        }
     </style>
 </head>
 
